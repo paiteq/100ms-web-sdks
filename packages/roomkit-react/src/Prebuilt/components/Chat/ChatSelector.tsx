@@ -18,6 +18,7 @@ import { useRoomLayoutConferencingScreen } from '../../provider/roomLayoutProvid
 import { useSetSubscribedChatSelector } from '../AppData/useUISettings';
 import { useFilteredRoles } from '../../common/hooks';
 import { CHAT_SELECTOR } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 const ChatDotIcon = () => {
   return <Box css={{ size: '$6', bg: '$primary_default', mx: '$2', r: '$round' }} />;
@@ -41,10 +42,10 @@ const SelectorItem = ({
   const Root = !isMobile
     ? Dropdown.Item
     : ({ children, ...rest }: { children: React.ReactNode; css: CSS }) => (
-        <Flex {...rest} css={{ p: '$6 $8', ...rest.css }}>
-          {children}
-        </Flex>
-      );
+      <Flex {...rest} css={{ p: '$6 $8', ...rest.css }}>
+        {children}
+      </Flex>
+    );
   return (
     <Root
       data-testid="chat_members"
@@ -56,7 +57,7 @@ const SelectorItem = ({
         css={{ display: 'flex', alignItems: 'center', gap: '$4', fontWeight: '$semiBold', color: '$on_surface_high' }}
       >
         {icon}
-        {value}
+        {DUTCH_JSON[value.toUpperCase()] ? DUTCH_JSON[value.toUpperCase()] : value}
       </Text>
       <Flex align="center" css={{ ml: 'auto', color: '$on_primary_high' }}>
         {unreadCount > 0 && (
@@ -172,7 +173,7 @@ const VirtualizedSelectItemList = ({
       selectItems = [<Everyone active={!selectedRole && !selectedPeerId} />];
     }
     if (roles.length > 0 && !searchValue) {
-      selectItems.push(<SelectorHeader isHorizontalDivider={isPublicChatEnabled}>Roles</SelectorHeader>);
+      selectItems.push(<SelectorHeader isHorizontalDivider={isPublicChatEnabled}>{DUTCH_JSON.ROLES}</SelectorHeader>);
       roles.forEach(userRole =>
         selectItems.push(<RoleItem key={userRole} active={selectedRole === userRole} role={userRole} />),
       );
@@ -180,7 +181,7 @@ const VirtualizedSelectItemList = ({
 
     if (filteredPeers.length > 0) {
       selectItems.push(
-        <SelectorHeader isHorizontalDivider={isPublicChatEnabled || roles.length > 0}>Participants</SelectorHeader>,
+        <SelectorHeader isHorizontalDivider={isPublicChatEnabled || roles.length > 0}>{DUTCH_JSON.PARTICIPANTS}</SelectorHeader>,
       );
     }
     filteredPeers.forEach(peer =>
@@ -213,7 +214,7 @@ export const ChatSelector = ({ role, peerId }: { role: string; peerId: string })
     <>
       {peers.length > 0 && isPrivateChatEnabled && (
         <Box css={{ px: '$4' }}>
-          <ParticipantSearch onSearch={setSearch} placeholder="Search for participants" />
+          <ParticipantSearch onSearch={setSearch} placeholder={DUTCH_JSON.SEARCH_FOR_PARTICIPANTS} />
         </Box>
       )}
       <VirtualizedSelectItemList

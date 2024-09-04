@@ -42,13 +42,14 @@ import { defaultPreviewPreference, UserPreferencesKeys, useUserPreferences } fro
 // @ts-ignore: No implicit Any
 import { calculateAvatarAndAttribBoxSize, getFormattedCount } from '../../common/utils';
 import { APP_DATA, UI_SETTINGS } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 const getParticipantChipContent = (peerCount = 0) => {
   if (peerCount === 0) {
-    return 'You are the first to join';
+    return DUTCH_JSON.FIRST_TO_JOIN;
   }
   const formattedNum = getFormattedCount(peerCount);
-  return `${formattedNum} other${parseInt(formattedNum) === 1 ? '' : 's'} in the session`;
+  return `${formattedNum} ${DUTCH_JSON.OTHER}${parseInt(formattedNum) === 1 ? '' : 's'} ${DUTCH_JSON.IN_THE_SESSION}`;
 };
 
 const useLocalTileAspectRatio = () => {
@@ -111,7 +112,7 @@ const PreviewJoin = ({
     join();
   }, [join, name, setPreviewPreference]);
   const { elements = {} } = useRoomLayoutPreviewScreen();
-  const { preview_header: previewHeader = {}, virtual_background } = elements || {};
+  const { virtual_background } = elements || {};
   const aspectRatio = useLocalTileAspectRatio();
   useEffect(() => {
     if (authToken) {
@@ -137,13 +138,13 @@ const PreviewJoin = ({
         <Flex direction="column" justify="center" css={{ w: '100%', maxWidth: '600px', gap: '$8' }}>
           <Logo />
           <Text variant="h4" css={{ wordBreak: 'break-word', textAlign: 'center' }}>
-            {previewHeader.title}
+            {DUTCH_JSON.GET_STARTED}
           </Text>
           <Text
             css={{ c: '$on_surface_medium', textAlign: 'center', maxWidth: '100%', wordWrap: 'break-word' }}
             variant="sm"
           >
-            {previewHeader.sub_title}
+            {DUTCH_JSON.GET_STARTED_SUB_TITLE}
           </Text>
           <Flex justify="center" css={{ gap: '$4' }}>
             {isStreamingOn ? (

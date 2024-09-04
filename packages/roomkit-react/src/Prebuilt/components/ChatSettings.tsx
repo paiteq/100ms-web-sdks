@@ -6,6 +6,7 @@ import { Popover } from '../../Popover';
 import { Text } from '../../Text';
 import { useRoomLayoutConferencingScreen } from '../provider/roomLayoutProvider/hooks/useRoomLayoutScreen';
 import { SESSION_STORE_KEY } from '../common/constants';
+import { DUTCH_JSON } from '../provider/roomLayoutProvider/constants/du';
 
 export const ChatSettings = () => {
   const hmsActions = useHMSActions();
@@ -59,7 +60,7 @@ export const ChatSettings = () => {
         >
           <PauseCircleIcon />
           <Text variant="sm" css={{ fontWeight: '$semiBold' }}>
-            Pause Chat
+            {DUTCH_JSON.PAUSE_CHAT}
           </Text>
         </Popover.Content>
       </Popover.Portal>

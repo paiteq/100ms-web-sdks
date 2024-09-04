@@ -18,6 +18,7 @@ import { useAudioOutputTest } from '../hooks/useAudioOutputTest';
 import { useDropdownSelection } from '../hooks/useDropdownSelection';
 import { settingOverflow } from './common';
 import { TEST_AUDIO_URL, UI_SETTINGS } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 /**
  * wrap the button on click of whom settings should open, this component will take care of the rest,
@@ -71,7 +72,7 @@ const Settings = ({ setHide }) => {
             </StyledVideoTile.Container>
           )}
           <DeviceSelector
-            title="Video"
+            title={DUTCH_JSON.VIDEO}
             devices={videoInput}
             icon={<VideoOnIcon />}
             selection={selectedDeviceIDs.videoInput}
@@ -87,7 +88,7 @@ const Settings = ({ setHide }) => {
 
       {audioInput?.length ? (
         <DeviceSelector
-          title={shouldShowAudioOutput ? 'Microphone' : 'Audio'}
+          title={shouldShowAudioOutput ? DUTCH_JSON.MICROPHONE : DUTCH_JSON.AUDIO}
           icon={<MicOnIcon />}
           devices={audioInput}
           selection={selectedDeviceIDs.audioInput}
@@ -102,7 +103,7 @@ const Settings = ({ setHide }) => {
 
       {audioOutputFiltered?.length && shouldShowAudioOutput ? (
         <DeviceSelector
-          title="Speaker"
+          title={DUTCH_JSON.SPEAKER}
           icon={<SpeakerIcon />}
           devices={audioOutput}
           selection={selectedDeviceIDs.audioOutput}
@@ -154,7 +155,7 @@ const DeviceSelector = ({ title, devices, selection, onChange, icon, children = 
             <DialogDropdownTrigger
               ref={ref}
               icon={icon}
-              title={devices.find(({ deviceId }) => deviceId === selection)?.label || 'Select device from list'}
+              title={devices.find(({ deviceId }) => deviceId === selection)?.label || DUTCH_JSON.SELECT_DEVICE_FROM_LIST}
               open={open}
             />
             <Dropdown.Portal>
@@ -200,7 +201,7 @@ const TestAudio = ({ id }) => {
         disabled={playing}
       >
         <SpeakerIcon />
-        &nbsp;Test{' '}
+        &nbsp;{DUTCH_JSON.TEST}{' '}
         <Text as="span" css={{ display: 'none', '@md': { display: 'inline' } }}>
           &nbsp; speaker
         </Text>

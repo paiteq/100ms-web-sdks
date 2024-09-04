@@ -8,6 +8,7 @@ import emptyChat from '../../images/empty-chat.svg';
 import { useRoomLayoutConferencingScreen } from '../../provider/roomLayoutProvider/hooks/useRoomLayoutScreen';
 import { useIsPeerBlacklisted } from '../hooks/useChatBlacklist';
 import { useLandscapeHLSStream, useMobileHLSStream } from '../../common/hooks';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const EmptyChat = () => {
   const { elements } = useRoomLayoutConferencingScreen();
@@ -42,14 +43,14 @@ export const EmptyChat = () => {
         </Box>
 
         <Text variant="h5" css={{ mt: '$8', c: '$on_surface_high' }}>
-          {canSendMessages ? 'Start a conversation' : 'No messages yet'}
+          {canSendMessages ? DUTCH_JSON.START_A_CONVERSATION : DUTCH_JSON.NO_MESSAGES_YET}
         </Text>
         {canSendMessages ? (
           <Text
             variant="sm"
             css={{ mt: '$4', maxWidth: '80%', textAlign: 'center', mx: 'auto', c: '$on_surface_medium' }}
           >
-            There are no messages here yet. Start a conversation by sending a message.
+            {DUTCH_JSON.NO_MESSAGES_YET_SUBTITLE}
           </Text>
         ) : null}
       </Box>

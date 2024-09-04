@@ -6,6 +6,7 @@ import ScreenShareImg from './../../images/screen-share.png';
 import { Box, Dropdown, Flex, IconButton, Text, Tooltip } from '../../../';
 import { ShareMenuIcon } from '../ShareMenuIcon';
 import { PDFFileOptions } from './pdfFileOptions';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 const MODALS = {
   SHARE: 'share',
@@ -66,8 +67,8 @@ export function ShareScreenOptions() {
               },
             }}
           >
-            <Text variant="h6">Start Sharing</Text>
-            <Text variant="sm">Choose what you want to share</Text>
+            <Text variant="h6">{DUTCH_JSON.START_SHARING}</Text>
+            <Text variant="sm">{DUTCH_JSON.CHOOSE_WHAT_YOU_WANT_TO_SHARE}</Text>
           </Dropdown.Item>
           <Dropdown.Item
             css={{
@@ -115,7 +116,7 @@ export function ShareScreenOptions() {
                 />
               </IconButton>
               <Flex direction="column" align="center">
-                <Text variant="body2">Share Screen</Text>
+                <Text variant="body2">{DUTCH_JSON.SHARE_SCREEN}</Text>
                 <Text
                   variant="caption"
                   css={{
@@ -123,7 +124,7 @@ export function ShareScreenOptions() {
                     textAlign: 'center',
                   }}
                 >
-                  Share your tab, window or your entire screen
+                  {DUTCH_JSON.SHARE_SCREEN_SUBTITLE}
                 </Text>
               </Flex>
             </Flex>
@@ -183,12 +184,12 @@ export function ShareScreenOptions() {
                       pr: '$4',
                     }}
                   >
-                    New
+                    {DUTCH_JSON.NEW}
                   </Text>
                 </Flex>
               </IconButton>
               <Flex direction="column" align="center">
-                <Text variant="body2">Share PDF</Text>
+                <Text variant="body2">{DUTCH_JSON.SHARE_PDF}</Text>
                 <Text
                   variant="caption"
                   css={{
@@ -196,7 +197,7 @@ export function ShareScreenOptions() {
                     textAlign: 'center',
                   }}
                 >
-                  Annotate, draw shapes, and more over PDFs
+                  {DUTCH_JSON.SHARE_PDF_SUBTITLE}
                 </Text>
               </Flex>
             </Flex>

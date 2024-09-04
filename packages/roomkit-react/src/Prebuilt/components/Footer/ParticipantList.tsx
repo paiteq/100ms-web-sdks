@@ -42,6 +42,7 @@ import { useParticipants } from '../../common/hooks';
 // @ts-ignore: No implicit Any
 import { getFormattedCount } from '../../common/utils';
 import { SIDE_PANE_OPTIONS } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const ParticipantList = ({
   offStageRoles = [],
@@ -117,7 +118,7 @@ export const ParticipantList = ({
               className="emptyParticipants"
               css={{ w: '100%', p: '$8 0', display: 'none' }}
             >
-              <Text variant="sm">{!filter ? 'No participants' : 'No matching participants'}</Text>
+              <Text variant="sm">{!filter ? DUTCH_JSON.NO_PARTICIPANTS : DUTCH_JSON.NO_MATCHING_PARTICIPANTS}</Text>
             </Flex>
           ) : null}
         </VirtualizedParticipants>
@@ -188,7 +189,7 @@ export const Participant = ({
         variant="sm"
         css={{ ...textEllipsis('100%'), flex: '1 1 0', mr: '$8', fontWeight: '$semiBold', color: '$on_surface_high' }}
       >
-        {peer.name} {localPeerId === peer.id ? '(You)' : ''}
+        {peer.name} {localPeerId === peer.id ? `(${DUTCH_JSON.YOU})` : ''}
       </Text>
       {isConnected && peer.roleName ? (
         <ParticipantActions
@@ -251,7 +252,7 @@ const VirtualizedParticipants = ({
           <RoleAccordion
             key={role}
             peerList={peersOrderedByRoles[role]}
-            roleName={role}
+            roleName={DUTCH_JSON[role.toUpperCase()] ? DUTCH_JSON[role.toUpperCase()] : role as string}
             isConnected={isConnected}
             filter={filter}
             offStageRoles={offStageRoles}
@@ -428,7 +429,7 @@ const ParticipantMoreActions = ({ peerId, role }: { peerId: string; role: string
 
 export const ParticipantSearch = ({
   onSearch,
-  placeholder = 'Search for participants',
+  placeholder = DUTCH_JSON.SEARCH_FOR_PARTICIPANTS,
   inSidePane = false,
 }: {
   inSidePane?: boolean;

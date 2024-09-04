@@ -7,6 +7,7 @@ import SwitchWithLabel from './SwitchWithLabel';
 import { useSetUiSettings } from '../AppData/useUISettings';
 import { settingOverflow } from './common';
 import { UI_SETTINGS } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const LayoutMode = {
   SIDEBAR: 'Sidebar',
@@ -43,7 +44,7 @@ export const LayoutSettings = () => {
     <Box className={settingOverflow()}>
       <Flex align="center" css={{ w: '100%', my: '$2', py: '$8', '@md': { display: 'none' } }}>
         <Text variant="md" css={{ fontWeight: '$semiBold' }}>
-          Tiles In View({maxTileCount})
+          {DUTCH_JSON.TILES_IN_VIEW}({maxTileCount})
         </Text>
         <Flex justify="end" css={{ flex: '1 1 0' }}>
           <Slider
@@ -58,9 +59,9 @@ export const LayoutSettings = () => {
           />
         </Flex>
       </Flex>
-      <SwitchWithLabel label="Audio Only Mode" id="audioOnlyMode" checked={isAudioOnly} onChange={toggleIsAudioOnly} />
+      <SwitchWithLabel label={DUTCH_JSON.AUDIO_ONLY_MODE} id="audioOnlyMode" checked={isAudioOnly} onChange={toggleIsAudioOnly} />
       <SwitchWithLabel
-        label="Mirror Local Video"
+        label={DUTCH_JSON.MIRROR_LOCAL_VIDEO}
         id="mirrorMode"
         checked={mirrorLocalVideo}
         onChange={value => {

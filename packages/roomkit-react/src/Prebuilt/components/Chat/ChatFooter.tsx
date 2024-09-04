@@ -22,6 +22,7 @@ import { useEmojiPickerStyles } from './useEmojiPickerStyles';
 import { useDefaultChatSelection, useLandscapeHLSStream, useMobileHLSStream } from '../../common/hooks';
 import { CHAT_MESSAGE_LIMIT } from './utils';
 import { CHAT_SELECTOR, SESSION_STORE_KEY } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 const TextArea = styled('textarea', {
   width: '100%',
@@ -81,7 +82,7 @@ export const ChatFooter = ({ onSend, children }: { onSend: (count: number) => vo
   const [draftMessage, setDraftMessage] = useChatDraftMessage();
   const isMobile = useMedia(cssConfig.media.md);
   const { elements, screenType } = useRoomLayoutConferencingScreen();
-  const message_placeholder = elements?.chat?.message_placeholder || 'Send a message';
+  const message_placeholder = DUTCH_JSON.SEND_A_MESSAGE;
   const localPeer = useHMSStore(selectLocalPeer);
   const isOverlayChat = elements?.chat?.is_overlay;
   const canDisableChat = !!elements?.chat?.real_time_controls?.can_disable_chat;
@@ -207,7 +208,7 @@ export const ChatFooter = ({ onSend, children }: { onSend: (count: number) => vo
                 >
                   <PauseCircleIcon />
                   <Text variant="sm" css={{ fontWeight: '$semiBold' }}>
-                    Pause Chat
+                    {DUTCH_JSON.PAUSE_CHAT}
                   </Text>
                 </Popover.Content>
               </Popover.Portal>

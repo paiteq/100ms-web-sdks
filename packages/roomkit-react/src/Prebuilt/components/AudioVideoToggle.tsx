@@ -46,6 +46,7 @@ import { useRoomLayoutConferencingScreen } from '../provider/roomLayoutProvider/
 import { useIsNoiseCancellationEnabled, useSetNoiseCancellation } from './AppData/useUISettings';
 import { useAudioOutputTest } from './hooks/useAudioOutputTest';
 import { isAndroid, isIOS, isMacOS, TEST_AUDIO_URL } from '../common/constants';
+import { DUTCH_JSON } from '../provider/roomLayoutProvider/constants/du';
 
 const krispPlugin = new HMSKrispPlugin();
 // const optionsCSS = { fontWeight: '$semiBold', color: '$on_surface_high', w: '100%' };
@@ -162,14 +163,14 @@ export const NoiseCancellation = ({
         }}
       >
         <AudioLevelIcon />
-        <ActionTile.Title>{isNoiseCancellationEnabled ? 'Noise Reduced' : 'Reduce Noise'}</ActionTile.Title>
+        <ActionTile.Title>{isNoiseCancellationEnabled ? DUTCH_JSON.NOISE_REDUCED : DUTCH_JSON.REDUCE_NOISE}</ActionTile.Title>
       </ActionTile.Root>
     );
   }
 
   if (iconOnly) {
     return (
-      <Tooltip title={isNoiseCancellationEnabled ? 'Noise Reduced' : 'Reduce Noise'}>
+      <Tooltip title={isNoiseCancellationEnabled ? DUTCH_JSON.NOISE_REDUCED : DUTCH_JSON.REDUCE_NOISE}>
         <IconButton
           onClick={async () => {
             await setNoiseCancellationWithPlugin(!isNoiseCancellationEnabled);
@@ -202,7 +203,7 @@ export const NoiseCancellation = ({
       >
         <Text css={{ display: 'flex', alignItems: 'center', gap: '$2', fontSize: '$xs', '& svg': { size: '$8' } }}>
           <AudioLevelIcon />
-          Reduce Noise
+          {DUTCH_JSON.REDUCE_NOISE}
         </Text>
         <Switch
           id="noise_cancellation"
@@ -223,7 +224,7 @@ const AudioOutputLabel = ({ deviceId }: { deviceId: string }) => {
   const { playing, setPlaying, audioRef } = useAudioOutputTest({ deviceId });
   return (
     <OptionLabel icon={<SpeakerIcon />}>
-      <Box css={{ flex: '1 1 0' }}>Speakers</Box>
+      <Box css={{ flex: '1 1 0' }}>{DUTCH_JSON.SPEAKER}</Box>
       <Text
         variant="xs"
         css={{ color: '$primary_bright', '&:hover': { cursor: 'pointer' } }}
@@ -241,7 +242,7 @@ const AudioOutputLabel = ({ deviceId }: { deviceId: string }) => {
           onPlay={() => setPlaying(true)}
           style={{ display: 'none' }}
         />
-        {playing ? 'Playing Sound...' : 'Play Test Sound'}
+        {playing ? DUTCH_JSON.PLAYING_SOUND : DUTCH_JSON.PLAY_TEST_SOUND}
       </Text>
     </OptionLabel>
   );
@@ -262,7 +263,7 @@ const AudioSettings = ({ onClick }: { onClick: () => void }) => {
         }}
         onClick={onClick}
       >
-        <SettingsIcon /> Audio Settings
+        <SettingsIcon /> {DUTCH_JSON.AUDIO_SETTINGS}
       </Dropdown.Item>
     </>
   );
@@ -306,7 +307,7 @@ export const AudioVideoToggle = ({ hideOptions = false }: { hideOptions?: boolea
         try {
           await setNoiseCancellationWithPlugin(true);
           ToastManager.addToast({
-            title: `Noise Reduction Enabled`,
+            title: `${DUTCH_JSON.NOISE_REDUCTION_MESSAGE}`,
             variant: 'standard',
             duration: 2000,
             icon: <AudioLevelIcon />,
@@ -330,7 +331,7 @@ export const AudioVideoToggle = ({ hideOptions = false }: { hideOptions?: boolea
           hideOptions={hideOptions || !hasAudioDevices}
           onDisabledClick={toggleAudio}
           testid="audio_toggle_btn"
-          tooltipMessage={`Turn ${isLocalAudioEnabled ? 'off' : 'on'} audio (${isMacOS ? '⌘' : 'ctrl'} + d)`}
+          tooltipMessage={`${DUTCH_JSON.TURN} ${isLocalAudioEnabled ? DUTCH_JSON.OFF : DUTCH_JSON.ON} ${DUTCH_JSON.AUDIO} (${isMacOS ? '⌘' : 'ctrl'} + d)`}
           icon={!isLocalAudioEnabled ? <MicOffIcon /> : <MicOnIcon />}
           active={isLocalAudioEnabled}
           onClick={toggleAudio}
@@ -338,7 +339,7 @@ export const AudioVideoToggle = ({ hideOptions = false }: { hideOptions?: boolea
         >
           <Dropdown.Group>
             <OptionLabel icon={<MicOnIcon />}>
-              <Box css={{ flex: '1 1 0' }}>{!shouldShowAudioOutput ? 'Audio' : 'Microphone'}</Box>
+              <Box css={{ flex: '1 1 0' }}>{!shouldShowAudioOutput ? DUTCH_JSON.AUDIO : DUTCH_JSON.MICROPHONE}</Box>
               {!showMuteIcon && <AudioLevel trackId={localPeer?.audioTrack} />}
             </OptionLabel>
             <Options
@@ -370,7 +371,7 @@ export const AudioVideoToggle = ({ hideOptions = false }: { hideOptions?: boolea
           disabled={!toggleVideo}
           hideOptions={hideOptions || !hasVideoDevices}
           onDisabledClick={toggleVideo}
-          tooltipMessage={`Turn ${isLocalVideoEnabled ? 'off' : 'on'} video (${isMacOS ? '⌘' : 'ctrl'} + e)`}
+          tooltipMessage={`${DUTCH_JSON.TURN} ${isLocalVideoEnabled ? DUTCH_JSON.OFF : DUTCH_JSON.ON} ${DUTCH_JSON.VIDEO} (${isMacOS ? '⌘' : 'ctrl'} + e)`}
           testid="video_toggle_btn"
           icon={!isLocalVideoEnabled ? <VideoOffIcon /> : <VideoOnIcon />}
           key="toggleVideo"
@@ -386,14 +387,14 @@ export const AudioVideoToggle = ({ hideOptions = false }: { hideOptions?: boolea
       ) : null}
 
       {localVideoTrack?.facingMode && roomState === HMSRoomState.Preview && (isIOS || isAndroid) ? (
-        <Tooltip title="Switch Camera" key="switchCamera">
+        <Tooltip title={DUTCH_JSON.SWITCH_CAMERA} key="switchCamera">
           <IconButton
             onClick={async () => {
               try {
                 await actions.switchCamera();
               } catch (e) {
                 ToastManager.addToast({
-                  title: `Error while flipping camera ${(e as Error).message || ''}`,
+                  title: `${DUTCH_JSON.SWITCH_CAMERA_ERROR} ${(e as Error).message || ''}`,
                   variant: 'error',
                 });
               }

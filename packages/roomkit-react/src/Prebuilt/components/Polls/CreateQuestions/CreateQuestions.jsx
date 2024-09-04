@@ -10,6 +10,7 @@ import { SavedQuestion } from './SavedQuestion';
 import { usePollViewToggle } from '../../AppData/useSidepane';
 import { usePollViewState } from '../../AppData/useUISettings';
 import { POLL_VIEWS } from '../../../common/constants';
+import { DUTCH_JSON } from '../../../provider/roomLayoutProvider/constants/du';
 
 const getEditableFormat = questions => {
   const editableQuestions = questions.map(question => {
@@ -25,7 +26,7 @@ export function CreateQuestions() {
   const { pollInView: id, setPollView } = usePollViewState();
   const interaction = useHMSStore(selectPollByID(id));
   const [questions, setQuestions] = useState(
-    interaction.questions?.length ? getEditableFormat(interaction.questions) : [{ draftID: uuid() }],
+    interaction?.questions?.length ? getEditableFormat(interaction.questions) : [{ draftID: uuid() }],
   );
 
   const isValidPoll = useMemo(() => questions.length > 0 && questions.every(isValidQuestion), [questions]);
@@ -109,12 +110,12 @@ export function CreateQuestions() {
         >
           <AddCircleIcon />
           <Text variant="body1" css={{ ml: '$md', c: '$inherit' }}>
-            Add another question
+            {DUTCH_JSON.ADD_ANOTHER_QUESTION}
           </Text>
         </Flex>
         <Flex css={{ w: '100%' }} justify="end">
           <Button disabled={!isValidPoll} onClick={async () => launchPoll()}>
-            Launch {interaction?.type}
+            {DUTCH_JSON.LAUNCH} {DUTCH_JSON[String(interaction?.type).toUpperCase()] ? DUTCH_JSON[String(interaction?.type).toUpperCase()] : interaction?.type}
           </Button>
         </Flex>
       </Flex>

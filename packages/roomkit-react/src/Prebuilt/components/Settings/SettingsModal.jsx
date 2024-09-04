@@ -13,23 +13,24 @@ import DeviceSettings from './DeviceSettings';
 import { LayoutSettings } from './LayoutSettings';
 import { NotificationSettings } from './NotificationSettings';
 import { settingContent } from './common';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 const settingsList = [
   {
     tabName: 'devices',
-    title: 'Device Settings',
+    title: DUTCH_JSON.DEVICE_SETTINGS,
     icon: SettingsIcon,
     content: DeviceSettings,
   },
   {
     tabName: 'notifications',
-    title: 'Notifications',
+    title: DUTCH_JSON.NOTIFICATIONS,
     icon: NotificationsIcon,
     content: NotificationSettings,
   },
   {
     tabName: 'layout',
-    title: 'Layout',
+    title: DUTCH_JSON.LAYOUT,
     icon: GridFourIcon,
     content: LayoutSettings,
   },
@@ -118,7 +119,7 @@ const MobileSettingModal = ({
           <Flex direction="row" justify="between" css={{ w: '100%' }}>
             {!selection ? (
               <Text variant="h6" css={{ display: 'flex' }}>
-                Settings
+                {DUTCH_JSON.SETTINGS}
               </Text>
             ) : (
               <Text variant="h6" css={{ display: 'flex' }}>
@@ -238,7 +239,7 @@ const DesktopSettingModal = ({
                 borderBottomLeftRadius: '$4',
               }}
             >
-              <Text variant="h5">Settings </Text>
+              <Text variant="h5">{DUTCH_JSON.SETTINGS} </Text>
               <Flex direction="column" css={{ mx: 0, overflowY: 'auto', pt: '$10' }}>
                 {settingsList
                   .filter(({ tabName }) => showSetting[tabName])

@@ -8,6 +8,7 @@ import { checkCorrectAnswer } from '../../../common/utils';
 import { MultipleChoiceOptions } from '../common/MultipleChoiceOptions';
 import { SingleChoiceOptions } from '../common/SingleChoiceOptions';
 import { QUESTION_TYPE } from '../../../common/constants';
+import { DUTCH_JSON } from '../../../provider/roomLayoutProvider/constants/du';
 
 export const QuestionCard = ({
   pollID,
@@ -131,7 +132,7 @@ export const QuestionCard = ({
               },
             )
             .otherwise(() => null)}
-          QUESTION {index} OF {totalQuestions}: {type.toUpperCase()}
+          {DUTCH_JSON.QUESTION} {index} {DUTCH_JSON.OF} {totalQuestions}: {DUTCH_JSON[type.toUpperCase()]}
         </Text>
       </Flex>
 
@@ -194,13 +195,13 @@ const QuestionActions = ({ isValidVote, response, isQuiz, onVote }) => {
     <Flex align="center" justify="end" css={{ gap: '$4', w: '100%' }}>
       {response ? (
         <Text css={{ fontWeight: '$semiBold', color: '$on_surface_medium' }}>
-          {response.skipped ? 'Skipped' : null}
-          {isQuiz && !response.skipped ? 'Answered' : null}
-          {!isQuiz && !response.skipped ? 'Voted' : null}
+          {response.skipped ? DUTCH_JSON.SKIPPED : null}
+          {isQuiz && !response.skipped ? DUTCH_JSON.ANSWERED : null}
+          {!isQuiz && !response.skipped ? DUTCH_JSON.VOTED : null}
         </Text>
       ) : (
         <Button css={{ p: '$xs $10', fontWeight: '$semiBold' }} disabled={!isValidVote} onClick={onVote}>
-          {isQuiz ? 'Answer' : 'Vote'}
+          {isQuiz ? DUTCH_JSON.ANSWER : DUTCH_JSON.VOTE}
         </Button>
       )}
     </Flex>

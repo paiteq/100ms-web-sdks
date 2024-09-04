@@ -2,6 +2,7 @@ import React from 'react';
 import { ExpandIcon } from '@100mslive/react-icons';
 import { Dropdown, Text } from '../../..';
 import { useFullscreen } from '../hooks/useFullscreen';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const FullScreenItem = () => {
   const { allowed, isFullscreen, toggleFullscreen } = useFullscreen();
@@ -19,7 +20,7 @@ export const FullScreenItem = () => {
     >
       <ExpandIcon />
       <Text variant="sm" css={{ ml: '$4' }}>
-        {isFullscreen ? 'Exit ' : 'Go '}Fullscreen
+        {isFullscreen ? `${DUTCH_JSON.EXIT} ` : `${DUTCH_JSON.GO} `}{DUTCH_JSON.FULL_SCREEN}
       </Text>
     </Dropdown.Item>
   );

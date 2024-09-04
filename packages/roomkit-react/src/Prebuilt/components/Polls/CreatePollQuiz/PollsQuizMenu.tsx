@@ -19,6 +19,7 @@ import { usePollViewState } from '../../AppData/useUISettings';
 import { isValidTextInput } from '../../../common/utils';
 import { StatusIndicator } from '../common/StatusIndicator';
 import { INTERACTION_TYPE, POLL_STATE, POLL_VIEWS } from '../../../common/constants';
+import { DUTCH_JSON } from '../../../provider/roomLayoutProvider/constants/du';
 
 export const PollsQuizMenu = () => {
   const togglePollView = usePollViewToggle();
@@ -26,7 +27,7 @@ export const PollsQuizMenu = () => {
 
   return (
     <Container rounded>
-      <ContentHeader content="Polls and Quizzes" onClose={togglePollView} />
+      <ContentHeader content={DUTCH_JSON.POLL_AND_QUIZES} onClose={togglePollView} />
       <Flex direction="column" css={{ px: '$10', pb: '$10', overflowY: 'auto' }}>
         {permissions?.pollWrite && <AddMenu />}
         <PrevMenu />
@@ -117,28 +118,28 @@ const AddMenu = () => {
   return (
     <>
       <Text variant="caption" css={{ c: '$on_surface_medium', mb: '$md' }}>
-        Select the type you want to continue with
+        {DUTCH_JSON.POLL_TYPE}
       </Text>
       <Flex css={{ w: '100%', gap: '$10', mb: '$md' }}>
         <InteractionSelectionCard
-          title={INTERACTION_TYPE.POLL}
+          title={DUTCH_JSON.POLL}
           icon={<StatsIcon width={32} height={32} />}
           onClick={() => setInteractionType(INTERACTION_TYPE.POLL)}
           active={interactionType === INTERACTION_TYPE.POLL}
         />
         <InteractionSelectionCard
-          title={INTERACTION_TYPE.QUIZ}
+          title={DUTCH_JSON.QUIZ}
           icon={<QuestionIcon width={32} height={32} />}
           onClick={() => setInteractionType(INTERACTION_TYPE.QUIZ)}
           active={interactionType === INTERACTION_TYPE.QUIZ}
         />
       </Flex>
       <Flex direction="column" css={{ mb: '$10' }}>
-        <Text variant="body2" css={{ mb: '$4' }}>{`Name this ${interactionType.toLowerCase()}`}</Text>
+        <Text variant="body2" css={{ mb: '$4' }}>{`${DUTCH_JSON.NAME_THIS} ${DUTCH_JSON[interactionType.toUpperCase()]}`}</Text>
         <Input
           ref={inputRef}
           type="text"
-          placeholder="Enter a name to continue"
+          placeholder={DUTCH_JSON.ENTER_NAME}
           value={title}
           onChange={event => setTitle(event.target.value.trimStart())}
           css={{
@@ -149,7 +150,7 @@ const AddMenu = () => {
         <Flex align="center" css={{ mt: '$10' }}>
           <Switch onCheckedChange={value => setHideVoteCount(value)} css={{ mr: '$6' }} />
           <Text variant="body2" css={{ c: '$on_surface_medium' }}>
-            Hide Vote Count
+            {DUTCH_JSON.HIDE_VOTE_COUNT}
           </Text>
         </Flex>
 
@@ -172,7 +173,7 @@ const AddMenu = () => {
               .catch(err => setError(err.message));
           }}
         >
-          Create {interactionType}
+          {DUTCH_JSON.CREATE} {DUTCH_JSON[interactionType.toUpperCase()] ? DUTCH_JSON[interactionType.toUpperCase()] : interactionType}
         </Button>
         <ErrorText error={error || titleError} />
       </Flex>
@@ -208,7 +209,7 @@ const PrevMenu = () => {
       }}
     >
       <Text variant="h6" css={{ c: '$on_surface_high' }}>
-        Previous Polls and Quizzes
+        {DUTCH_JSON.PREVIOUS_POLLS_AND_QUIZZES}
       </Text>
       <Flex direction="column" css={{ gap: '$10', mt: '$8' }}>
         {sortedPolls?.map(poll => (
@@ -240,7 +241,7 @@ const InteractionCard = ({ id, title, status }: { id: string; title: string; sta
             })
           }
         >
-          View
+          {DUTCH_JSON.VIEW}
         </Button>
       </Flex>
     </Flex>

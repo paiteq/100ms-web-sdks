@@ -7,6 +7,7 @@ import { Button, config as cssConfig, Flex, Input, styled } from '../../..';
 import { useRoomLayout } from '../../provider/roomLayoutProvider';
 // @ts-ignore: No implicit Any
 import { PreviewSettings } from './PreviewJoin';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 const PreviewForm = ({
   name,
@@ -32,7 +33,7 @@ const PreviewForm = ({
   const { isHLSRunning, isRTMPRunning, isHLSRecordingOn, isBrowserRecordingOn } = useRecordingStreaming();
 
   const layout = useRoomLayout();
-  const { join_form: joinForm = {} } = layout?.screens?.preview?.default?.elements || {};
+  const { join_form: joinForm = { go_live_btn_label: "Sluit u nu aan", join_btn_label: "Sluit u nu aan" } } = layout?.screens?.preview?.default?.elements || {};
 
   const showGoLive =
     joinForm?.join_btn_type === JoinForm_JoinBtnType.JOIN_BTN_TYPE_JOIN_AND_GO_LIVE &&
@@ -54,7 +55,7 @@ const PreviewForm = ({
           css={{ w: '100%', boxSizing: 'border-box' }}
           value={name}
           onChange={e => onChange(e.target.value.trimStart())}
-          placeholder="Enter name"
+          placeholder={DUTCH_JSON.USER_NAME_PLACEHOLDER}
           autoFocus
           autoComplete="name"
           onKeyDown={e => {
@@ -73,7 +74,7 @@ const PreviewForm = ({
       <Button type="submit" icon disabled={!name || !enableJoin} onClick={onJoin}>
         {/* Conditions to show go live: The first broadcaster joins a streaming kit that is not live */}
         {showGoLive ? <GoLiveIcon height={18} width={18} /> : null}
-        {showGoLive ? joinForm.go_live_btn_label : joinForm.join_btn_label}
+        {showGoLive ? DUTCH_JSON.GO_LIVE : DUTCH_JSON.JOIN_NOW}
       </Button>
     </Form>
   );

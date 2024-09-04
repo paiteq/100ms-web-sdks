@@ -31,6 +31,7 @@ import { useSidepaneResetOnLayoutUpdate } from '../AppData/useSidepaneResetOnLay
 // @ts-ignore
 import { useSetAppDataByKey, useUISettings } from '../AppData/useUISettings';
 import { APP_DATA, SIDE_PANE_OPTIONS, UI_SETTINGS } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 const iconDims = { height: '40px', width: '40px' };
 
@@ -122,7 +123,7 @@ export const VBPicker = ({ backgroundMedia = [] }: { backgroundMedia: VirtualBac
     <Flex css={{ pr: '$6', size: '100%' }} direction="column">
       <Flex align="center" justify="between" css={{ w: '100%', background: '$surface_dim', pb: '$4' }}>
         <Text variant="h6" css={{ color: '$on_surface_high', display: 'flex', alignItems: 'center' }}>
-          Virtual Background {isMobile && loadingEffects ? <Loading size={18} style={{ marginLeft: '0.5rem' }} /> : ''}
+          {DUTCH_JSON.VIRTUAL_BACKGROUND} {isMobile && loadingEffects ? <Loading size={18} style={{ marginLeft: '0.5rem' }} /> : ''}
         </Text>
         <Box
           css={{ color: '$on_surface_high', '&:hover': { color: '$on_surface_medium' }, cursor: 'pointer' }}
@@ -150,10 +151,10 @@ export const VBPicker = ({ backgroundMedia = [] }: { backgroundMedia: VirtualBac
         }}
       >
         <VBCollection
-          title="Effects"
+          title={DUTCH_JSON.EFFECTS}
           options={[
             {
-              title: 'No effect',
+              title: DUTCH_JSON.NO_EFFECT,
               icon: <CrossCircleIcon style={iconDims} />,
               value: HMSVirtualBackgroundTypes.NONE,
               onClick: async () => {
@@ -163,7 +164,7 @@ export const VBPicker = ({ backgroundMedia = [] }: { backgroundMedia: VirtualBac
               supported: true,
             },
             {
-              title: 'Blur',
+              title: DUTCH_JSON.BLUR,
               icon: <BlurPersonHighIcon style={iconDims} />,
               value: HMSVirtualBackgroundTypes.BLUR,
               onClick: async () => {
@@ -199,7 +200,7 @@ export const VBPicker = ({ backgroundMedia = [] }: { backgroundMedia: VirtualBac
                   max={1}
                 />
                 <Text variant="caption" css={{ fontWeight: '$medium', color: '$on_surface_medium' }}>
-                  High
+                  {DUTCH_JSON.HIGH}
                 </Text>
               </Flex>
             </Box>
@@ -207,7 +208,7 @@ export const VBPicker = ({ backgroundMedia = [] }: { backgroundMedia: VirtualBac
         </Flex>
 
         <VBCollection
-          title="Backgrounds"
+          title={DUTCH_JSON.BACKGROUNDS}
           options={mediaList.map(mediaURL => ({
             mediaURL,
             value: mediaURL,

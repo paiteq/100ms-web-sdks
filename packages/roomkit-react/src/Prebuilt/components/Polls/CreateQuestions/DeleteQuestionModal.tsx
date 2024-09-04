@@ -4,6 +4,7 @@ import { Button } from '../../../../Button';
 import { Box, Flex } from '../../../../Layout';
 import { Dialog } from '../../../../Modal';
 import { Text } from '../../../../Text';
+import { DUTCH_JSON } from '../../../provider/roomLayoutProvider/constants/du';
 
 export const DeleteQuestionModal = ({
   open,
@@ -29,7 +30,7 @@ export const DeleteQuestionModal = ({
             >
               <AlertTriangleIcon style={{ marginRight: '0.5rem' }} />
               <Text variant="lg" css={{ color: 'inherit', fontWeight: '$semiBold' }}>
-                Delete Question?
+                {DUTCH_JSON.DELETE_QUESTION}?
               </Text>
 
               <Box
@@ -44,7 +45,7 @@ export const DeleteQuestionModal = ({
               </Box>
             </Flex>
             <Text variant="sm" css={{ color: '$on_surface_medium', mb: '$8', mt: '$4' }}>
-              The question will be deleted. You can't undo this action.
+              {DUTCH_JSON.QUESTION_WILL_BE_DELETED}
             </Text>
             <Flex css={{ w: '100%', mt: '$12', gap: '$md' }}>
               <Button
@@ -53,7 +54,7 @@ export const DeleteQuestionModal = ({
                 onClick={() => setOpen(false)}
                 css={{ w: '100%', fontSize: '$md', fontWeight: '$semiBold' }}
               >
-                Cancel
+                {DUTCH_JSON.CANCEL}
               </Button>
               <Button
                 css={{ w: '100%', fontSize: '$md', fontWeight: '$semiBold' }}
@@ -63,7 +64,7 @@ export const DeleteQuestionModal = ({
                   setOpen(false);
                 }}
               >
-                Delete
+                {DUTCH_JSON.DELETE}
               </Button>
             </Flex>
           </Box>

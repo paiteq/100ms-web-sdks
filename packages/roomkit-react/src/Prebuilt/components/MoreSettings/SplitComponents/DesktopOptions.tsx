@@ -56,6 +56,7 @@ import { useMyMetadata } from '../../hooks/useMetadata';
 import { usePIPChat } from '../../PIP/usePIPChat';
 // @ts-ignore: No implicit any
 import { APP_DATA, isMacOS, SIDE_PANE_OPTIONS } from '../../../common/constants';
+import { DUTCH_JSON } from '../../../provider/roomLayoutProvider/constants/du';
 
 const MODALS = {
   CHANGE_NAME: 'changeName',
@@ -119,7 +120,7 @@ export const DesktopOptions = ({
         onOpenChange={value => updateState(MODALS.MORE_SETTINGS, value)}
         modal={false}
       >
-        <Tooltip title="More options">
+        <Tooltip title={DUTCH_JSON.MORE_OPTIONS}>
           <Dropdown.Trigger asChild data-testid="more_settings_btn">
             <IconButton>
               <HamburgerMenuIcon />
@@ -143,7 +144,7 @@ export const DesktopOptions = ({
             <Dropdown.Item onClick={toggleBRB} data-testid="brb_btn">
               <BrbIcon />
               <Text variant="sm" css={{ ml: '$4', color: '$on_surface_high' }}>
-                Be Right Back
+                {DUTCH_JSON.BE_RIGHT_BACK}
               </Text>
               <Flex justify="end" css={{ color: '$on_surface_high', flexGrow: '1' }}>
                 {isBRBOn ? <CheckIcon /> : null}
@@ -176,7 +177,7 @@ export const DesktopOptions = ({
                   <Flex css={{ w: '100%', h: '100%', p: '$8' }}>
                     <PipIcon />
                     <Text variant="sm" css={{ ml: '$4' }}>
-                      {isPipOn ? 'Disable' : 'Enable'} Picture-in-Picture
+                      {isPipOn ? DUTCH_JSON.DISABLE : DUTCH_JSON.ENABLE} {DUTCH_JSON.PICTURE_IN_PICTURE}
                     </Text>
                   </Flex>
                 }
@@ -196,7 +197,7 @@ export const DesktopOptions = ({
           <Dropdown.Item onClick={() => updateState(MODALS.DEVICE_SETTINGS, true)} data-testid="device_settings_btn">
             <SettingsIcon />
             <Text variant="sm" css={{ ml: '$4' }}>
-              Settings
+              {DUTCH_JSON.SETTINGS}
             </Text>
           </Dropdown.Item>
           {match({ screenType, isSupported: HMSHLSPlayer.isSupported() })
@@ -218,7 +219,7 @@ export const DesktopOptions = ({
                   </Checkbox.Root>
                   <Flex justify="between" css={{ width: '100%' }}>
                     <Text variant="sm" css={{ ml: '$4' }}>
-                      Show HLS Stats
+                      {DUTCH_JSON.SHOW_STATS}
                     </Text>
 
                     <Text variant="sm" css={{ ml: '$4' }}>
@@ -235,7 +236,7 @@ export const DesktopOptions = ({
               >
                 <InfoIcon />
                 <Text variant="sm" css={{ ml: '$4' }}>
-                  Stats for Nerds
+                  {DUTCH_JSON.STATS_FOR_NERDS}
                 </Text>
               </Dropdown.Item>
             ))}

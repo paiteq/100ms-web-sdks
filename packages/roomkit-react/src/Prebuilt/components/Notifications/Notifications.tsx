@@ -37,6 +37,7 @@ import { usePollViewToggle } from '../AppData/useSidepane';
 import { useIsNotificationDisabled, useSubscribedNotifications } from '../AppData/useUISettings';
 import { usePIPWindow } from '../PIP/usePIPWindow';
 import { ROLE_CHANGE_DECLINED } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 const pollToastKey: Record<string, string> = {};
 
@@ -146,7 +147,7 @@ export function Notifications() {
           const pollStartedBy = vanillaStore.getState(selectPeerNameByID(notification.data.startedBy)) || 'Participant';
 
           const pollToastID = ToastManager.addToast({
-            title: `${pollStartedBy} started a ${notification.data.type}: ${notification.data.title}`,
+            title: `${pollStartedBy} ${DUTCH_JSON.STARTED_A} ${notification.data.type}: ${notification.data.title}`,
             action: (
               <Button
                 onClick={() => togglePollView(notification.data.id)}
@@ -158,7 +159,7 @@ export function Notifications() {
                   p: '$xs $md',
                 }}
               >
-                {notification.data.type === 'quiz' ? 'Answer' : 'Vote'}
+                {notification.data.type === 'quiz' ? DUTCH_JSON.ANSWER : DUTCH_JSON.VOTE}
               </Button>
             ),
             duration: Infinity,

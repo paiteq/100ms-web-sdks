@@ -22,6 +22,7 @@ import { MultipleChoiceOptionInputs } from '../common/MultipleChoiceOptions';
 // @ts-ignore
 import { SingleChoiceOptionInputs } from '../common/SingleChoiceOptions';
 import { QUESTION_TYPE, QUESTION_TYPE_TITLE } from '../../../common/constants';
+import { DUTCH_JSON } from '../../../provider/roomLayoutProvider/constants/du';
 
 export const QuestionForm = ({
   question,
@@ -109,16 +110,16 @@ export const QuestionForm = ({
   return (
     <>
       <Text variant="overline" css={{ c: '$on_surface_low', textTransform: 'uppercase' }}>
-        Question {index + 1} of {length}
+        {DUTCH_JSON.QUESTION} {index + 1} {DUTCH_JSON.OF} {length}
       </Text>
       <Text variant="body2" css={{ mt: '$4', mb: '$md' }}>
-        Question Type
+        {DUTCH_JSON.QUESTION_TYPE}
       </Text>
       <Dropdown.Root open={open} onOpenChange={setOpen}>
         <DialogDropdownTrigger
           ref={ref}
           // @ts-ignore
-          title={QUESTION_TYPE_TITLE[type]}
+          title={DUTCH_JSON[type.toUpperCase()] ? DUTCH_JSON[type.toUpperCase()] : QUESTION_TYPE_TITLE[type]}
           css={{
             backgroundColor: '$surface_bright',
             border: '1px solid $border_bright',
@@ -140,7 +141,7 @@ export const QuestionForm = ({
                   }}
                 >
                   {/* @ts-ignore */}
-                  {QUESTION_TYPE_TITLE[value]}
+                  {DUTCH_JSON[value.toUpperCase()] ? DUTCH_JSON[value.toUpperCase()] : QUESTION_TYPE_TITLE[value]}
                 </Dropdown.Item>
               );
             })}
@@ -149,7 +150,7 @@ export const QuestionForm = ({
       </Dropdown.Root>
       <TextArea
         maxLength={1024}
-        placeholder="Ask a question"
+        placeholder={DUTCH_JSON.ASK_A_QUESTION}
         css={{
           mt: '$md',
           backgroundColor: '$surface_bright',
@@ -169,14 +170,14 @@ export const QuestionForm = ({
       {type === QUESTION_TYPE.SINGLE_CHOICE || type === QUESTION_TYPE.MULTIPLE_CHOICE ? (
         <>
           <Text variant="body2" css={{ mb: '$6', c: '$on_surface_medium' }}>
-            Options
+            {DUTCH_JSON.OPTIONS}
           </Text>
 
           {isQuiz && (
             <Text variant="xs" css={{ c: '$on_surface_medium', mb: '$md' }}>
               {type === QUESTION_TYPE.SINGLE_CHOICE
-                ? 'Use the radio buttons to indicate the correct answer'
-                : 'Use the checkboxes to indicate the correct answer(s)'}
+                ? DUTCH_JSON.USE_THE_RADIO_CORRECT
+                : DUTCH_JSON.USE_THE_CHECK_BOX_CORRECT}
             </Text>
           )}
 
@@ -218,7 +219,7 @@ export const QuestionForm = ({
                   c: 'inherit',
                 }}
               >
-                Add an option
+                {DUTCH_JSON.ADD_AN_OPTION}
               </Text>
             </Flex>
           )}
@@ -227,7 +228,7 @@ export const QuestionForm = ({
             <>
               <Flex justify="between" align="center" css={{ gap: '$6', w: '100%' }}>
                 <Text variant="sm" css={{ color: '$on_surface_medium' }}>
-                  Point Weightage
+                  {DUTCH_JSON.POINT_WEIGHTAGE}
                 </Text>
                 <Input
                   type="number"
@@ -261,8 +262,8 @@ export const QuestionForm = ({
           disabled={isValid}
           title={
             options.length < 2
-              ? 'At least two options must be added'
-              : `Please fill all the fields ${isQuiz ? 'and mark the correct answer(s)' : ''} to continue`
+              ? DUTCH_JSON.AT_LEAST_TWO_OPTIONS
+              : `${DUTCH_JSON.FILL_ALL_THE_FIELDS} ${isQuiz ? DUTCH_JSON.MARK_CORRECT_ANSWERS : ''} ${DUTCH_JSON.TO_CONTINUE}`
           }
           boxCss={{ maxWidth: '$40' }}
         >
@@ -281,7 +282,7 @@ export const QuestionForm = ({
               });
             }}
           >
-            Save
+            {DUTCH_JSON.SAVE}
           </Button>
         </Tooltip>
       </Flex>

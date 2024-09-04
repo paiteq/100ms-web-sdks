@@ -13,6 +13,7 @@ import IconButton from '../../IconButton';
 // @ts-ignore
 import { useIsSidepaneTypeOpen, useSidepaneToggle } from '../AppData/useSidepane';
 import { APP_DATA, isSafari, SIDE_PANE_OPTIONS } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const VBToggle = () => {
   const toggleVB = useSidepaneToggle(SIDE_PANE_OPTIONS.VB);
@@ -27,7 +28,7 @@ export const VBToggle = () => {
   }
 
   return (
-    <Tooltip side="top" disabled={isVBOpen} title="Configure Virtual Background">
+    <Tooltip side="top" disabled={isVBOpen} title={DUTCH_JSON.CONFIGURE_VIRTUAL_BACKGROUND}>
       <IconButton active={!isVBOpen} onClick={toggleVB} data-testid="virtual_bg_btn">
         {loadingEffects ? <Loading size={18} /> : <VirtualBackgroundIcon />}
       </IconButton>

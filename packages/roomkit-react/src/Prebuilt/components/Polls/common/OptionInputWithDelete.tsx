@@ -4,6 +4,7 @@ import { TrashIcon } from '@100mslive/react-icons';
 import { Input } from '../../../../Input';
 // @ts-ignore
 import IconButton from '../../../IconButton';
+import { DUTCH_JSON } from '../../../provider/roomLayoutProvider/constants/du';
 
 export const OptionInputWithDelete = ({
   index,
@@ -19,7 +20,7 @@ export const OptionInputWithDelete = ({
   return (
     <>
       <Input
-        placeholder={`Option ${index + 1}`}
+        placeholder={`${DUTCH_JSON.OPTION} ${index + 1}`}
         css={{
           w: '100%',
           backgroundColor: '$surface_bright',

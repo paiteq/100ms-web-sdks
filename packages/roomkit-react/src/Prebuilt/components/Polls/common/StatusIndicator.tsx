@@ -2,6 +2,7 @@ import React from 'react';
 import { HMSPollState } from '@100mslive/react-sdk';
 import { Flex, Text } from '../../../../';
 import { PollStage } from './constants';
+import { DUTCH_JSON } from '../../../provider/roomLayoutProvider/constants/du';
 
 const statusMap: Record<HMSPollState, PollStage> = {
   created: PollStage.DRAFT,
@@ -27,7 +28,7 @@ export const StatusIndicator = ({ status }: { status?: HMSPollState }) => {
             color: '$on_primary_high',
           }}
         >
-          {statusMap[status]}
+          {DUTCH_JSON[statusMap[status]] ? DUTCH_JSON[statusMap[status]] : statusMap[status]}
         </Text>
       </Flex>
     </Flex>

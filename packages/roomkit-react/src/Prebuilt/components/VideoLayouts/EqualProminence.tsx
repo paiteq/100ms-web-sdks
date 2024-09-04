@@ -12,6 +12,7 @@ import { LayoutProps } from './interface';
 import { useUISettings } from '../AppData/useUISettings';
 import { usePagesWithTiles, useTileLayout } from '../hooks/useTileLayout';
 import { UI_SETTINGS } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export function EqualProminence({ isInsetEnabled = false, peers, onPageChange, onPageSize, edgeToEdge }: LayoutProps) {
   const isMobile = useMedia(cssConfig.media.md);
@@ -51,8 +52,8 @@ export function EqualProminence({ isInsetEnabled = false, peers, onPageChange, o
       )}
       {pageList.length === 0 ? (
         <WaitingView
-          title="You're the first to join"
-          subtitle="Sit back and relax till others join"
+          title={DUTCH_JSON.FIRST_TO_JOIN}
+          subtitle={DUTCH_JSON.SIT_BACK_AND_RELAX}
           icon={<PeopleAddIcon width="56px" height="56px" style={{ color: 'white' }} />}
         />
       ) : null}

@@ -112,7 +112,7 @@ export const ErrorFactory = {
         ErrorCodes.TracksErrors.CANT_ACCESS_CAPTURE_DEVICE,
         'CantAccessCaptureDevice',
         action,
-        `User denied permission to access capture device - ${deviceInfo}`,
+        `Gebruiker heeft geen toestemming gekregen voor toegang tot het opnameapparaat - ${deviceInfo}`,
         description,
       );
     },

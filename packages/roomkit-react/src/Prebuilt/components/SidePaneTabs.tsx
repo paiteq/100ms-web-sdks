@@ -16,6 +16,7 @@ import { useIsSidepaneTypeOpen, useSidepaneReset, useSidepaneToggle } from './Ap
 // @ts-ignore: No implicit Any
 import { getFormattedCount } from '../common/utils';
 import { SIDE_PANE_OPTIONS } from '../common/constants';
+import { DUTCH_JSON } from '../provider/roomLayoutProvider/constants/du';
 
 const tabTriggerCSS = {
   color: '$on_surface_low',
@@ -124,7 +125,7 @@ export const SidePaneTabs = React.memo<{
                     screenType !== 'hls_live_streaming' && chat_title
                   ) : (
                     <span>
-                      Participants&nbsp;
+                      {DUTCH_JSON.PARTICIPANTS}&nbsp;
                       <ParticipantCount count={peerCount} />
                     </span>
                   )}
@@ -175,10 +176,10 @@ export const SidePaneTabs = React.memo<{
               <Flex css={{ w: '100%' }}>
                 <Tabs.List css={{ flexGrow: 1, borderRadius: '$2', bg: '$surface_default' }}>
                   <Tabs.Trigger value={SIDE_PANE_OPTIONS.CHAT} onClick={toggleChat} css={tabTriggerCSS}>
-                    {chat_title}
+                    {DUTCH_JSON.CHAT}
                   </Tabs.Trigger>
                   <Tabs.Trigger value={SIDE_PANE_OPTIONS.PARTICIPANTS} onClick={toggleParticipants} css={tabTriggerCSS}>
-                    Participants&nbsp;
+                    {DUTCH_JSON.PARTICIPANTS}&nbsp;
                     <ParticipantCount count={peerCount} />
                   </Tabs.Trigger>
                 </Tabs.List>

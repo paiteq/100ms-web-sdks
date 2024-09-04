@@ -12,6 +12,7 @@ import { useRoomLayoutConferencingScreen } from '../../provider/roomLayoutProvid
 import { useSubscribeChatSelector } from '../AppData/useUISettings';
 import { useDefaultChatSelection, useFilteredRoles } from '../../common/hooks';
 import { CHAT_SELECTOR } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const ChatSelectorContainer = () => {
   const [open, setOpen] = useState(false);
@@ -32,7 +33,7 @@ export const ChatSelectorContainer = () => {
     <>
       <Flex align="center" css={{ mb: '$8', flex: '1 1 0', pl: '$2' }}>
         <Text variant="xs" css={{ color: '$on_surface_medium' }}>
-          {selection ? 'To' : 'Choose Participant'}
+          {selection ? DUTCH_JSON.TO : DUTCH_JSON.CHOOSE_PARTICIPANT}
         </Text>
 
         {isMobile ? (
@@ -61,7 +62,9 @@ export const ChatSelectorContainer = () => {
               ) : (
                 <PersonIcon width={16} height={16} />
               )}
-              {selection || 'Search'}
+              {
+                selection ? DUTCH_JSON[String(selection).toUpperCase()] ? DUTCH_JSON[String(selection).toUpperCase()] : selection : DUTCH_JSON.SEARCH
+              }
             </Text>
             {selection &&
               (open ? <ChevronUpIcon width={16} height={16} /> : <ChevronDownIcon width={16} height={16} />)}
@@ -96,7 +99,9 @@ export const ChatSelectorContainer = () => {
                   ) : (
                     <PersonIcon width={16} height={16} />
                   )}
-                  {selection || 'Search'}
+                  {
+                    selection ? DUTCH_JSON[String(selection).toUpperCase()] ? DUTCH_JSON[String(selection).toUpperCase()] : selection : DUTCH_JSON.SEARCH
+                  }
                 </Text>
                 {selection && (
                   <ChevronDownIcon

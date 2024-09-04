@@ -19,6 +19,7 @@ import { usePollViewState } from '../../AppData/useUISettings';
 import { getPeerResponses } from '../../../common/utils';
 import { StatusIndicator } from '../common/StatusIndicator';
 import { POLL_VIEWS } from '../../../common/constants';
+import { DUTCH_JSON } from '../../../provider/roomLayoutProvider/constants/du';
 
 export const Voting = ({ id, toggleVoting }: { id: string; toggleVoting: () => void }) => {
   const actions = useHMSActions();
@@ -110,7 +111,7 @@ export const Voting = ({ id, toggleVoting }: { id: string; toggleVoting: () => v
       <Flex direction="column" css={{ p: '$8 $10', flex: '1 1 0', overflowY: 'auto' }}>
         {poll.state === 'started' ? (
           <Text css={{ color: '$on_surface_medium', fontWeight: '$semiBold' }}>
-            {pollCreatorName || 'Participant'} started a {poll.type}
+            {pollCreatorName || DUTCH_JSON.PARTICIPANT} {DUTCH_JSON.STARTED_A} {DUTCH_JSON[poll.type.toUpperCase()]}
           </Text>
         ) : null}
 
@@ -129,12 +130,12 @@ export const Voting = ({ id, toggleVoting }: { id: string; toggleVoting: () => v
             css={{ fontWeight: '$semiBold', w: 'max-content' }}
             onClick={() => actions.interactivityCenter.stopPoll(id)}
           >
-            End {poll.type}
+            {DUTCH_JSON.END} {DUTCH_JSON[poll.type.toUpperCase()]}
           </Button>
         )}
         {canViewLeaderboard ? (
           <Button css={{ fontWeight: '$semiBold', w: 'max-content' }} onClick={() => setPollView(POLL_VIEWS.RESULTS)}>
-            View Leaderboard
+            {DUTCH_JSON.VIEW_LEADERBOARD}
           </Button>
         ) : null}
       </Flex>

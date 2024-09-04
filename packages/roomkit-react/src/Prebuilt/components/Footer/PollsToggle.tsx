@@ -8,6 +8,7 @@ import { useIsSidepaneTypeOpen, usePollViewToggle } from '../AppData/useSidepane
 import { useUnreadPollQuizPresent } from '../hooks/useUnreadPollQuizPresent';
 // @ts-ignore: No implicit Any
 import { SIDE_PANE_OPTIONS } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const PollsToggle = () => {
   const isPollsOpen = useIsSidepaneTypeOpen(SIDE_PANE_OPTIONS.POLLS);
@@ -21,7 +22,7 @@ export const PollsToggle = () => {
   }, [isPollsOpen, unreadPollQuiz, setUnreadPollQuiz]);
 
   return (
-    <Tooltip key="polls" title={`${isPollsOpen ? 'Close' : 'Open'} polls and quizzes`}>
+    <Tooltip key="polls" title={`${isPollsOpen ? DUTCH_JSON.CLOSE : DUTCH_JSON.OPEN} ${DUTCH_JSON.POLL_AND_QUIZES}`}>
       <IconButton
         onClick={() => {
           togglePollView();

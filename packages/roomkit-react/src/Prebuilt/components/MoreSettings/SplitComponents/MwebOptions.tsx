@@ -66,6 +66,7 @@ import { useLandscapeHLSStream, useMobileHLSStream, useRecordingHandler } from '
 import { getFormattedCount } from '../../../common/utils';
 // @ts-ignore: No implicit any
 import { SHEET_OPTIONS, SIDE_PANE_OPTIONS } from '../../../common/constants';
+import { DUTCH_JSON } from '../../../provider/roomLayoutProvider/constants/du';
 
 const MODALS = {
   CHANGE_NAME: 'changeName',
@@ -133,7 +134,7 @@ export const MwebOptions = ({
   return (
     <>
       <Sheet.Root open={openOptionsSheet} onOpenChange={setOpenOptionsSheet}>
-        <Tooltip title="More options">
+        <Tooltip title={DUTCH_JSON.MORE_OPTIONS}>
           <Sheet.Trigger asChild data-testid="more_settings_btn">
             <IconButton css={{ bg: isMobileHLSStream || isLandscapeHLSStream ? '$surface_default' : '' }}>
               <HamburgerMenuIcon />
@@ -182,7 +183,7 @@ export const MwebOptions = ({
               >
                 <ActionTile.Count>{getFormattedCount(peerCount)}</ActionTile.Count>
                 <PeopleIcon />
-                <ActionTile.Title>Participants</ActionTile.Title>
+                <ActionTile.Title>{DUTCH_JSON.PARTICIPANTS}</ActionTile.Title>
               </ActionTile.Root>
             )}
 
@@ -195,7 +196,7 @@ export const MwebOptions = ({
                 }}
               >
                 {isHandRaised ? <HandRaiseSlashedIcon /> : <HandIcon />}
-                <ActionTile.Title>{isHandRaised ? 'Lower' : 'Raise'} Hand</ActionTile.Title>
+                <ActionTile.Title>{isHandRaised ? DUTCH_JSON.LOWER : DUTCH_JSON.RAISE} {DUTCH_JSON.HAND}</ActionTile.Title>
               </ActionTile.Root>
             ) : null}
             <NoiseCancellation setOpenOptionsSheet={setOpenOptionsSheet} actionTile />
@@ -218,7 +219,7 @@ export const MwebOptions = ({
                 }}
               >
                 <VirtualBackgroundIcon />
-                <ActionTile.Title>Virtual Background</ActionTile.Title>
+                <ActionTile.Title>{DUTCH_JSON.VIRTUAL_BACKGROUND}</ActionTile.Title>
               </ActionTile.Root>
             ) : null}
 
@@ -230,7 +231,7 @@ export const MwebOptions = ({
                 }}
               >
                 <EmojiIcon />
-                <ActionTile.Title>Emoji Reactions</ActionTile.Title>
+                <ActionTile.Title>{DUTCH_JSON.EMOJI_REACTIONS}</ActionTile.Title>
               </ActionTile.Root>
             )}
 
@@ -243,7 +244,7 @@ export const MwebOptions = ({
                 }}
               >
                 {unreadPollQuiz ? <QuizActiveIcon /> : <QuizIcon />}
-                <ActionTile.Title>Polls and Quizzes</ActionTile.Title>
+                <ActionTile.Title>{DUTCH_JSON.POLLS_AND_QUIZZES}</ActionTile.Title>
               </ActionTile.Root>
             )}
 
@@ -256,7 +257,7 @@ export const MwebOptions = ({
                 }}
               >
                 <BrbIcon />
-                <ActionTile.Title>Be Right Back</ActionTile.Title>
+                <ActionTile.Title>{DUTCH_JSON.BE_RIGHT_BACK}</ActionTile.Title>
               </ActionTile.Root>
             )}
 
@@ -267,7 +268,7 @@ export const MwebOptions = ({
               }}
             >
               <SettingsIcon />
-              <ActionTile.Title>Settings</ActionTile.Title>
+              <ActionTile.Title>{DUTCH_JSON.SETTINGS}</ActionTile.Title>
             </ActionTile.Root>
 
             {isConnected && permissions?.browserRecording ? (
@@ -293,9 +294,9 @@ export const MwebOptions = ({
                 {isRecordingLoading ? <Loading /> : <RecordIcon />}
                 <ActionTile.Title>
                   {match({ isBrowserRecordingOn, isRecordingLoading })
-                    .with({ isBrowserRecordingOn: true, isRecordingLoading: false }, () => 'Recording On')
-                    .with({ isRecordingLoading: true }, () => 'Starting Recording')
-                    .with({ isRecordingLoading: false }, () => 'Start Recording')
+                    .with({ isBrowserRecordingOn: true, isRecordingLoading: false }, () => DUTCH_JSON.RECORDING_ON)
+                    .with({ isRecordingLoading: true }, () => DUTCH_JSON.STARTING_RECORDING)
+                    .with({ isRecordingLoading: false }, () => DUTCH_JSON.START_RECORDING)
                     .otherwise(() => null)}
                 </ActionTile.Title>
               </ActionTile.Root>
@@ -309,7 +310,7 @@ export const MwebOptions = ({
                 }}
               >
                 <InfoIcon />
-                <ActionTile.Title>About Session</ActionTile.Title>
+                <ActionTile.Title>{DUTCH_JSON.ABOUT_SESSION}</ActionTile.Title>
               </ActionTile.Root>
             ) : null}
           </Box>

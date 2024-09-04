@@ -6,6 +6,7 @@ import { Text } from '../../../Text';
 import { useRoomLayoutConferencingScreen } from '../../provider/roomLayoutProvider/hooks/useRoomLayoutScreen';
 import { useIsPeerBlacklisted } from '../hooks/useChatBlacklist';
 import { SESSION_STORE_KEY } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const ChatPaused = () => {
   const hmsActions = useHMSActions();
@@ -34,18 +35,18 @@ export const ChatPaused = () => {
     >
       <Box>
         <Text variant="sm" css={{ fontWeight: '$semiBold', color: '$on_surface_high' }}>
-          Chat paused
+          {DUTCH_JSON.CHAT_PAUSED}
         </Text>
         <Text
           variant="xs"
           css={{ color: '$on_surface_medium', maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis' }}
         >
-          Chat has been paused by {chatStateUpdatedBy?.peerId === localPeer?.id ? 'you' : chatStateUpdatedBy?.userName}
+          {DUTCH_JSON.CHAT_PAUSED_BY} {chatStateUpdatedBy?.peerId === localPeer?.id ? DUTCH_JSON.YOU : chatStateUpdatedBy?.userName}
         </Text>
       </Box>
       {can_disable_chat ? (
         <Button css={{ fontWeight: '$semiBold', fontSize: '$sm', borderRadius: '$2' }} onClick={unPauseChat}>
-          Resume
+          {DUTCH_JSON.RESUME}
         </Button>
       ) : (
         <></>
@@ -66,7 +67,7 @@ export const ChatBlocked = () => {
       css={{ borderRadius: '$1', bg: '$surface_default', p: '$4 $4 $4 $8', w: '100%' }}
     >
       <Text variant="sm" css={{ color: '$on_surface_medium', textAlign: 'center', w: '100%' }}>
-        You've been blocked from sending messages
+        {DUTCH_JSON.BLOCKED_MESSAGE}
       </Text>
     </Flex>
   );
