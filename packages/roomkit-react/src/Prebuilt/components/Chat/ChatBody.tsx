@@ -113,12 +113,12 @@ export const MessageType = ({
   const localPeerRoleName = useHMSStore(selectLocalPeerRoleName);
   if (receiver) {
     return (
-      <MessageTypeContainer left={hasCurrentUserSent ? `${peerName ? `to ${peerName}` : ''}` : 'to You'} right="(DM)" />
+      <MessageTypeContainer left={hasCurrentUserSent ? `${peerName ? `Naar ${peerName}` : ''}` : 'aan jou'} right="(DM)" />
     );
   }
 
   if (roles && roles.length) {
-    return <MessageTypeContainer left={`to ${hasCurrentUserSent ? roles[0] : localPeerRoleName}`} right="(Group)" />;
+    return <MessageTypeContainer left={`Naar ${hasCurrentUserSent ? roles[0] : localPeerRoleName}`} right="(Group)" />;
   }
   return null;
 };
@@ -274,7 +274,7 @@ const ChatMessage = React.memo(
                     variant="sub2"
                     css={{ color: isOverlay ? '#FFF' : '$on_surface_high', fontWeight: '$semiBold' }}
                   >
-                    {message.sender === localPeerId ? `${message.senderName} (You)` : message.senderName}
+                    {message.sender === localPeerId ? `${message.senderName} (Jij)` : message.senderName}
                   </SenderName>
                 </Tooltip>
               )}

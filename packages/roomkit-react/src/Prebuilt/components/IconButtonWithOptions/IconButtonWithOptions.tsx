@@ -5,6 +5,7 @@ import { Flex } from '../../../Layout';
 import { styled } from '../../../Theme';
 import { Tooltip } from '../../../Tooltip';
 import IconButton from '../../IconButton';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 const variants = {
   disabled: {
@@ -137,7 +138,7 @@ export const IconButtonWithOptions = ({
             }}
           >
             <OptionsSection {...commonProps}>
-              <Tooltip title="View Options">
+              <Tooltip title={DUTCH_JSON.VIEW_OPTIONS}>
                 <Icon {...commonProps}>
                   <VerticalMenuIcon />
                 </Icon>

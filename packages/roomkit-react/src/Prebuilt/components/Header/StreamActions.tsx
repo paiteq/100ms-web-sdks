@@ -23,6 +23,7 @@ import { useRoomLayoutConferencingScreen } from '../../provider/roomLayoutProvid
 import { useRecordingHandler } from '../../common/hooks';
 // @ts-ignore
 import { formatTime } from '../../common/utils';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const LiveStatus = () => {
   const { isHLSRunning, isRTMPRunning } = useRecordingStreaming();
@@ -157,14 +158,14 @@ const StartRecording = () => {
           <Button variant="danger" data-testid="stop_recording" icon outlined onClick={() => setOpen(true)}>
             <RecordIcon />
             <Text as="span" css={{ '@md': { display: 'none' }, color: 'currentColor' }}>
-              Stop Recording
+              {DUTCH_JSON.STOP_RECORDING}
             </Text>
           </Button>
         </Popover.Trigger>
         <Popover.Portal>
           <Popover.Content align="end" sideOffset={8} css={{ w: '$64' }}>
             <Text variant="body1" css={{ color: '$on_surface_medium' }}>
-              Are you sure you want to end the recording?
+              {DUTCH_JSON.END_RECORDING_SUB_TITLE}
             </Text>
             <Button
               data-testid="stop_recording_confirm"
@@ -184,7 +185,7 @@ const StartRecording = () => {
                 setOpen(false);
               }}
             >
-              Stop
+              {DUTCH_JSON.STOP}
             </Button>
           </Popover.Content>
         </Popover.Portal>
@@ -203,7 +204,7 @@ const StartRecording = () => {
     >
       {recordingStarted ? <Loading size={24} color="currentColor" /> : <RecordIcon />}
       <Text as="span" css={{ '@md': { display: 'none' }, color: 'currentColor' }}>
-        {recordingStarted ? 'Starting' : 'Start'} Recording
+        {recordingStarted ? DUTCH_JSON.STARTING : DUTCH_JSON.START} {DUTCH_JSON.RECORDING}
       </Text>
     </Button>
   );
@@ -247,7 +248,7 @@ export const StopRecordingInSheet = ({
             <Flex justify="start" align="center" gap="3">
               <AlertTriangleIcon />
               <Text variant="h5" css={{ c: '$alert_error_default' }}>
-                Stop Recording
+                {DUTCH_JSON.STOP_RECORDING}
               </Text>
             </Flex>
             <Sheet.Close css={{ color: 'white' }} onClick={onClose}>
@@ -258,7 +259,7 @@ export const StopRecordingInSheet = ({
         <HorizontalDivider />
         <Box as="div" css={{ p: '$10', overflowY: 'scroll', maxHeight: '70vh' }}>
           <Text variant="caption" css={{ c: '$on_surface_medium', pb: '$8' }}>
-            Are you sure you want to stop recording? You can’t undo this action.
+            {DUTCH_JSON.END_RECORDING_SUB_TITLE}
           </Text>
           <Button
             variant="danger"
@@ -267,7 +268,7 @@ export const StopRecordingInSheet = ({
             data-testid="popup_change_btn"
             onClick={onStopRecording}
           >
-            Stop
+            {DUTCH_JSON.STOP}
           </Button>
         </Box>
       </Sheet.Content>

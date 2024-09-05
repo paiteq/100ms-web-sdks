@@ -12,6 +12,7 @@ import { Button } from '../../../Button';
 import { useRoomLayout } from '../../provider/roomLayoutProvider';
 import { useIsSidepaneTypeOpen, useSidepaneToggle } from '../AppData/useSidepane';
 import { SIDE_PANE_OPTIONS } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 const ChatAction = React.forwardRef((_, ref) => {
   const toggleChat = useSidepaneToggle(SIDE_PANE_OPTIONS.CHAT);
@@ -23,7 +24,7 @@ const ChatAction = React.forwardRef((_, ref) => {
 
   return (
     <Button outlined as="div" variant="standard" css={{ w: 'max-content' }} onClick={toggleChat} ref={ref}>
-      Open Chat
+      {DUTCH_JSON.OPEN_CHAT}
     </Button>
   );
 });
@@ -110,9 +111,8 @@ export const ToastConfig = {
     multiple: notifications => {
       const count = new Set(notifications.map(notification => notification.data?.id)).size;
       return {
-        title: `${notifications[notifications.length - 1].data?.name} ${
-          count > 1 ? `and ${count} others` : ''
-        } raised hand`,
+        title: `${notifications[notifications.length - 1].data?.name} ${count > 1 ? `and ${count} others` : ''
+          } raised hand`,
         icon: <HandIcon />,
       };
     },
@@ -128,9 +128,8 @@ export const ToastConfig = {
     multiple: notifications => {
       const count = new Set(notifications.map(notification => notification.data?.id)).size;
       return {
-        title: `${notifications[notifications.length - 1].data?.name} ${
-          count > 1 ? `and ${count} others` : ''
-        } raised hand`,
+        title: `${notifications[notifications.length - 1].data?.name} ${count > 1 ? `and ${count} others` : ''
+          } raised hand`,
         icon: <HandIcon />,
         action: <HandRaiseAction isSingleHandRaise={false} />,
       };

@@ -15,6 +15,7 @@ import { useRoomLayoutConferencingScreen } from '../../provider/roomLayoutProvid
 // @ts-ignore: No implicit Any
 import { useDropdownList } from '../hooks/useDropdownList';
 import { useLandscapeHLSStream, useMobileHLSStream } from '../../common/hooks';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const MwebLeaveRoom = ({
   leaveRoom,
@@ -54,10 +55,9 @@ export const MwebLeaveRoom = ({
           </Sheet.Trigger>
           <Sheet.Content container={container}>
             <LeaveCard
-              title={showStream ? 'Leave Stream' : 'Leave Session'}
-              subtitle={`Others will continue after you leave. You can join the ${
-                showStream ? 'stream' : 'session'
-              } again.`}
+              title={showStream ? DUTCH_JSON.LEAVE_STREAM : DUTCH_JSON.LEAVE_SESSION}
+              subtitle={`${DUTCH_JSON.LEAVE_SESSION_SUB_TITLE} ${showStream ? DUTCH_JSON.STREAM : DUTCH_JSON.SESSION
+                } ${DUTCH_JSON.AGAIN}`}
               bg="$surface_default"
               titleColor="$on_surface_high"
               icon={<ExitIcon height={24} width={24} style={{ transform: 'rotate(180deg)' }} />}
@@ -66,10 +66,9 @@ export const MwebLeaveRoom = ({
             />
 
             <LeaveCard
-              title={showStream ? 'End Stream' : 'End Session'}
-              subtitle={`The will end the ${
-                showStream ? 'stream' : 'session'
-              } for everyone. You can't undo this action.`}
+              title={showStream ? DUTCH_JSON.END_STREAM : DUTCH_JSON.END_SESSION}
+              subtitle={`${DUTCH_JSON.THE} ${showStream ? DUTCH_JSON.STREAM : DUTCH_JSON.SESSION
+                } ${DUTCH_JSON.END_SESSION_SUB_TITLE}`}
               bg="$alert_error_dim"
               titleColor="$alert_error_brighter"
               css={{ color: '$alert_error_bright', '&:hover': { color: '$alert_error_brighter' } }}
@@ -109,7 +108,7 @@ const LeaveButton = ({ onClick }: { onClick: () => void }) => {
 
   return isMobileHLSStream || isLandscapeHLSStream ? (
     <IconButton key="LeaveRoom" data-testid="leave_room_btn" onClick={onClick}>
-      <Tooltip title="Leave Room">
+      <Tooltip title={DUTCH_JSON.LEAVE_ROOM}>
         <Box>
           <CrossIcon />
         </Box>
@@ -125,7 +124,7 @@ const LeaveButton = ({ onClick }: { onClick: () => void }) => {
       }}
       onClick={onClick}
     >
-      <Tooltip title="Leave Room">
+      <Tooltip title={DUTCH_JSON.LEAVE_ROOM}>
         <Box>
           <ExitIcon style={{ transform: 'rotate(180deg)' }} />
         </Box>

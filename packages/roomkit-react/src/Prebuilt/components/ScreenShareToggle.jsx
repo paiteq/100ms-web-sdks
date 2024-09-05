@@ -9,6 +9,7 @@ import { ScreenShareButton } from './ShareMenuIcon';
 import { useUISettings } from './AppData/useUISettings';
 import { isScreenshareSupported } from '../common/utils';
 import { UI_SETTINGS } from '../common/constants';
+import { DUTCH_JSON } from '../provider/roomLayoutProvider/constants/du';
 
 export const ScreenshareToggle = ({ css = {} }) => {
   const isAllowedToPublish = useHMSStore(selectIsAllowedToPublish);
@@ -45,7 +46,7 @@ export const ScreenshareToggle = ({ css = {} }) => {
             await requestPermission();
           }}
         >
-          <Tooltip title={`${!isVideoScreenshare ? 'Start' : 'Stop'} screen sharing`}>
+          <Tooltip title={`${!isVideoScreenshare ? DUTCH_JSON.START : DUTCH_JSON.STOP} ${DUTCH_JSON.SCREEN_SHARING}`}>
             <Box>
               <ShareScreenIcon />
             </Box>

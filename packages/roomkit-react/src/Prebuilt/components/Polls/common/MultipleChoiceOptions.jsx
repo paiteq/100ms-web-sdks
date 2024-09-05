@@ -5,6 +5,7 @@ import { Checkbox, Flex, Label, Text } from '../../../../';
 import { OptionInputWithDelete } from './OptionInputWithDelete';
 import { VoteCount } from './VoteCount';
 import { VoteProgress } from './VoteProgress';
+import { DUTCH_JSON } from '../../../provider/roomLayoutProvider/constants/du';
 
 export const MultipleChoiceOptions = ({
   questionIndex,
@@ -69,7 +70,7 @@ export const MultipleChoiceOptions = ({
 
             {isStopped && isQuiz && localPeerResponse?.options.includes(option.index) ? (
               <Text variant="sm" css={{ color: '$on_surface_medium', maxWidth: 'max-content' }}>
-                Your Answer
+                {DUTCH_JSON.YOUR_ANSWER}
               </Text>
             ) : null}
           </Flex>

@@ -8,6 +8,7 @@ import IconButton from '../../IconButton';
 import { useIsSidepaneTypeOpen, useSidepaneToggle } from '../AppData/useSidepane';
 // @ts-ignore: No implicit Any
 import { SIDE_PANE_OPTIONS } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const ChatToggle = ({ onClick }: { onClick?: () => void }) => {
   const countUnreadMessages = useHMSStore(selectUnreadHMSMessagesCount);
@@ -20,7 +21,7 @@ export const ChatToggle = ({ onClick }: { onClick?: () => void }) => {
         position: 'relative',
       }}
     >
-      <Tooltip key="chat" title={`${isChatOpen ? 'Close' : 'Open'} chat`}>
+      <Tooltip key="chat" title={`${isChatOpen ? DUTCH_JSON.CLOSE : DUTCH_JSON.OPEN} ${DUTCH_JSON.CHAT}`}>
         <IconButton
           onClick={() => (onClick ? onClick() : toggleChat())}
           css={{ bg: isChatOpen ? '$surface_brighter' : '' }}

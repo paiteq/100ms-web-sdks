@@ -21,6 +21,7 @@ import { useRoomLayoutConferencingScreen } from '../provider/roomLayoutProvider/
 import { useDropdownList } from './hooks/useDropdownList';
 import { useLandscapeHLSStream, useMobileHLSStream } from '../common/hooks';
 import { EMOJI_REACTION_TYPE } from '../common/constants';
+import { DUTCH_JSON } from '../provider/roomLayoutProvider/constants/du';
 
 init({ data });
 
@@ -81,7 +82,7 @@ export const EmojiReaction = ({ showCard = false }) => {
             isMobile || isLandscape ? { bg: '$surface_default', r: '$round', border: '1px solid $border_bright' } : {}
           }
         >
-          <Tooltip title="Emoji reaction">
+          <Tooltip title={DUTCH_JSON.EMOGI_REACTION}>
             <Box>
               <EmojiIcon />
             </Box>

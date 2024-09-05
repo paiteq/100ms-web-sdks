@@ -6,6 +6,7 @@ import { Tooltip } from '../../Tooltip';
 import IconButton from '../IconButton';
 import { useRoomLayoutConferencingScreen } from '../provider/roomLayoutProvider/hooks/useRoomLayoutScreen';
 import { useMyMetadata } from './hooks/useMetadata';
+import { DUTCH_JSON } from '../provider/roomLayoutProvider/constants/du';
 
 export const RaiseHand = ({ css }: { css?: CSS }) => {
   const { isHandRaised, toggleHandRaise } = useMyMetadata();
@@ -16,7 +17,7 @@ export const RaiseHand = ({ css }: { css?: CSS }) => {
   }
 
   return (
-    <Tooltip title={isHandRaised ? 'Lower hand' : 'Raise hand'}>
+    <Tooltip title={isHandRaised ? DUTCH_JSON.LOWER_HAND : DUTCH_JSON.RAISE_HAND}>
       <IconButton
         data-testid="hand_raise_btn"
         css={css}

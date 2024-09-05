@@ -38,7 +38,7 @@ export function ShareScreenOptions() {
       >
         <Dropdown.Trigger asChild data-testid="sharing_btn" disabled={amIScreenSharing}>
           <ShareMenuIcon disabled={amIScreenSharing}>
-            <Tooltip title="Share">
+            <Tooltip title={DUTCH_JSON.SHARE}>
               <Box>
                 <VerticalMenuIcon />
               </Box>

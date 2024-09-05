@@ -10,6 +10,7 @@ import { Header } from './Header';
 // @ts-ignore: No implicit Any
 import { defaultPreviewPreference, UserPreferencesKeys, useUserPreferences } from './hooks/useUserPreferences';
 import { textEllipsis } from '../../utils';
+import { DUTCH_JSON } from '../provider/roomLayoutProvider/constants/du';
 
 export const LeaveScreen = () => {
   const { rejoin } = useHMSAppStateContext();
@@ -29,7 +30,7 @@ export const LeaveScreen = () => {
           👋
         </Text>
         <Text variant="h4" css={{ color: '$on_surface_high', fontWeight: '$semiBold', mt: '$12' }}>
-          You left the room
+          {DUTCH_JSON.YOU_LEFT_THE_ROOM}
         </Text>
         <Text
           variant="body1"
@@ -40,7 +41,7 @@ export const LeaveScreen = () => {
             textAlign: 'center',
           }}
         >
-          Have a nice day
+          {DUTCH_JSON.HAVE_A_NICE_DAY}
           {previewPreference.name && (
             <Box as="span" css={{ ...textEllipsis(100) }}>
               , {previewPreference.name}
@@ -50,7 +51,7 @@ export const LeaveScreen = () => {
         </Text>
         <Flex css={{ mt: '$14', gap: '$10', alignItems: 'center' }}>
           <Text variant="body1" css={{ color: '$on_surface_medium', fontWeight: '$regular' }}>
-            Left by mistake?
+            {DUTCH_JSON.LEFT_BY_MISTAKE}
           </Text>
           <Button
             onClick={() => {
@@ -60,7 +61,7 @@ export const LeaveScreen = () => {
             data-testid="join_again_btn"
           >
             <ExitIcon />
-            <Text css={{ ml: '$3', fontWeight: '$semiBold', color: 'inherit' }}>Rejoin</Text>
+            <Text css={{ ml: '$3', fontWeight: '$semiBold', color: 'inherit' }}>{DUTCH_JSON.REJOIN}</Text>
           </Button>
         </Flex>
       </Flex>

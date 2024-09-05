@@ -12,6 +12,7 @@ import { LeaveCard } from './LeaveCard';
 import { LeaveSessionContent } from './LeaveSessionContent';
 // @ts-ignore: No implicit Any
 import { useDropdownList } from '../hooks/useDropdownList';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const DesktopLeaveRoom = ({
   leaveRoom,
@@ -52,7 +53,7 @@ export const DesktopLeaveRoom = ({
             }}
             onClick={() => setShowLeaveRoomAlert(true)}
           >
-            <Tooltip title="Leave Room">
+            <Tooltip title={DUTCH_JSON.LEAVE_ROOM}>
               <Box>
                 <ExitIcon style={{ transform: 'rotate(180deg)' }} />
               </Box>
@@ -83,10 +84,9 @@ export const DesktopLeaveRoom = ({
                   data-testid="just_leave_btn"
                 >
                   <LeaveCard
-                    title={showStream ? 'Leave Stream' : 'Leave Session'}
-                    subtitle={`Others will continue after you leave. You can join the ${
-                      showStream ? 'stream' : 'session'
-                    } again.`}
+                    title={showStream ? DUTCH_JSON.LEAVE_STREAM : DUTCH_JSON.LEAVE_SESSION}
+                    subtitle={`${DUTCH_JSON.LEAVE_SESSION_SUB_TITLE} ${showStream ? DUTCH_JSON.STREAM : DUTCH_JSON.SESSION
+                      } ${DUTCH_JSON.AGAIN}.`}
                     bg=""
                     titleColor="$on_surface_high"
                     icon={<ExitIcon height={24} width={24} style={{ transform: 'rotate(180deg)' }} />}
@@ -105,10 +105,9 @@ export const DesktopLeaveRoom = ({
                   data-testid="end_room_btn"
                 >
                   <LeaveCard
-                    title={showStream ? 'End Stream' : 'End Session'}
-                    subtitle={`The ${
-                      showStream ? 'stream' : 'session'
-                    } will end for everyone. You can't undo this action.`}
+                    title={showStream ? DUTCH_JSON.END_STREAM : DUTCH_JSON.END_SESSION}
+                    subtitle={`${DUTCH_JSON.THE} ${showStream ? DUTCH_JSON.STREAM : DUTCH_JSON.SESSION
+                      } ${DUTCH_JSON.END_SESSION_SUB_TITLE}`}
                     bg=""
                     titleColor="$alert_error_brighter"
                     icon={<StopIcon height={24} width={24} />}
@@ -131,7 +130,7 @@ export const DesktopLeaveRoom = ({
           key="LeaveRoom"
           data-testid="leave_room_btn"
         >
-          <Tooltip title="Leave Room">
+          <Tooltip title={DUTCH_JSON.LEAVE_ROOM}>
             <Box>
               <ExitIcon style={{ transform: 'rotate(180deg)' }} />
             </Box>

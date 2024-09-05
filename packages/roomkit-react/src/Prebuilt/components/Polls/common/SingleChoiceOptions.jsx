@@ -5,6 +5,7 @@ import { Flex, Label, RadioGroup, Text } from '../../../..';
 import { OptionInputWithDelete } from './OptionInputWithDelete';
 import { VoteCount } from './VoteCount';
 import { VoteProgress } from './VoteProgress';
+import { DUTCH_JSON } from '../../../provider/roomLayoutProvider/constants/du';
 
 export const SingleChoiceOptions = ({
   questionIndex,
@@ -77,7 +78,7 @@ export const SingleChoiceOptions = ({
               </Flex>
               {isStopped && isQuiz && localPeerResponse?.option === option.index ? (
                 <Text variant="sm" css={{ color: '$on_surface_medium', maxWidth: 'max-content' }}>
-                  Your Answer
+                  {DUTCH_JSON.YOUR_ANSWER}
                 </Text>
               ) : null}
             </Flex>

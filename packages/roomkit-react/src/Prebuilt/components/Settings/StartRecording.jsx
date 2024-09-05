@@ -6,6 +6,7 @@ import { ResolutionInput } from '../Streaming/ResolutionInput';
 import { ToastManager } from '../Toast/ToastManager';
 import { useRecordingHandler } from '../../common/hooks';
 import { RTMP_RECORD_DEFAULT_RESOLUTION } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 const StartRecording = ({ open, onOpenChange }) => {
   const permissions = useHMSStore(selectPermissions);
@@ -31,17 +32,17 @@ const StartRecording = ({ open, onOpenChange }) => {
               <Flex gap={2} css={{ c: '$alert_error_default' }}>
                 <AlertTriangleIcon />
                 <Text css={{ c: 'inherit' }} variant="h6">
-                  End Recording
+                  {DUTCH_JSON.END_RECORDING}
                 </Text>
               </Flex>
             </Dialog.Title>
             <Text variant="sm" css={{ c: '$on_surface_medium', my: '$8' }}>
-              Are you sure you want to end recording? You can’t undo this action.
+              {DUTCH_JSON.END_RECORDING_SUB_TITLE}
             </Text>
             <Flex justify="end" css={{ mt: '$12' }}>
               <Dialog.Close asChild>
                 <Button outlined css={{ borderColor: '$secondary_bright', mr: '$4' }}>
-                  Don't end
+                  {DUTCH_JSON.DONT_END}
                 </Button>
               </Dialog.Close>
               <Button
@@ -60,7 +61,7 @@ const StartRecording = ({ open, onOpenChange }) => {
                   onOpenChange(false);
                 }}
               >
-                End recording
+                {DUTCH_JSON.END_RECORDING}
               </Button>
             </Flex>
           </Dialog.Content>
@@ -72,7 +73,7 @@ const StartRecording = ({ open, onOpenChange }) => {
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Content css={{ width: 'min(400px,80%)', p: '$10' }}>
         <Dialog.Title>
-          <Text variant="h6">Start Recording</Text>
+          <Text variant="h6">{DUTCH_JSON.START_RECORDING}</Text>
         </Dialog.Title>
         <ResolutionInput
           testId="recording_resolution_mobile"
@@ -91,7 +92,7 @@ const StartRecording = ({ open, onOpenChange }) => {
             onOpenChange(false);
           }}
         >
-          Start
+          {DUTCH_JSON.START}
         </Button>
       </Dialog.Content>
     </Dialog.Root>

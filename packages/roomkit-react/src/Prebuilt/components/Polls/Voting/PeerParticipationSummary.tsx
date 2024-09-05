@@ -5,6 +5,7 @@ import { Text } from '../../../../Text';
 import { StatisticBox } from './StatisticBox';
 import { useQuizSummary } from './useQuizSummary';
 import { getFormattedTime } from '../common/utils';
+import { DUTCH_JSON } from '../../../provider/roomLayoutProvider/constants/du';
 
 export const PeerParticipationSummary = ({ quiz }: { quiz: HMSPoll }) => {
   const localPeerId = useHMSStore(selectLocalPeerID);
@@ -17,39 +18,37 @@ export const PeerParticipationSummary = ({ quiz }: { quiz: HMSPoll }) => {
 
   const boxes = isLocalPeerQuizCreator
     ? [
-        {
-          title: 'Voted',
-          value: `${summary.totalUsers ? ((100 * summary.votedUsers) / summary.totalUsers).toFixed(0) : 0}% (${
-            summary.votedUsers
+      {
+        title: DUTCH_JSON.VOTED,
+        value: `${summary.totalUsers ? ((100 * summary.votedUsers) / summary.totalUsers).toFixed(0) : 0}% (${summary.votedUsers
           }/${summary.totalUsers})`,
-        },
-        {
-          title: 'Correct Answers',
-          value: `${summary.totalUsers ? ((100 * summary.correctUsers) / summary.totalUsers).toFixed(0) : 0}% (${
-            summary.correctUsers
+      },
+      {
+        title: DUTCH_JSON.CORRECT_ANSWERS,
+        value: `${summary.totalUsers ? ((100 * summary.correctUsers) / summary.totalUsers).toFixed(0) : 0}% (${summary.correctUsers
           }/${summary.totalUsers})`,
-        },
-        // Time in ms
-        { title: 'Avg. Time Taken', value: getFormattedTime(summary.avgTime) },
-        {
-          title: 'Avg. Score',
-          value: Number.isInteger(summary.avgScore) ? summary.avgScore : summary.avgScore.toFixed(2),
-        },
-      ]
+      },
+      // Time in ms
+      { title: DUTCH_JSON.AVG_TIME_TAKEN, value: getFormattedTime(summary.avgTime) },
+      {
+        title: DUTCH_JSON.AVG_SCORE,
+        value: Number.isInteger(summary.avgScore) ? summary.avgScore : summary.avgScore.toFixed(2),
+      },
+    ]
     : [
-        { title: 'Your rank', value: peerEntry?.position || '-' },
-        { title: 'Points', value: peerEntry?.score || 0 },
-        // Time in ms
-        { title: 'Time Taken', value: getFormattedTime(peerEntry?.duration) },
-        {
-          title: 'Correct Answers',
-          value: peerEntry?.totalResponses ? `${peerEntry?.correctResponses}/${peerEntry.totalResponses}` : '-',
-        },
-      ];
+      { title: DUTCH_JSON.YOUR_RANK, value: peerEntry?.position || '-' },
+      { title: DUTCH_JSON.POINTS, value: peerEntry?.score || 0 },
+      // Time in ms
+      { title: DUTCH_JSON.TIME_TAKEN, value: getFormattedTime(peerEntry?.duration) },
+      {
+        title: DUTCH_JSON.CORRECT_ANSWERS,
+        value: peerEntry?.totalResponses ? `${peerEntry?.correctResponses}/${peerEntry.totalResponses}` : '-',
+      },
+    ];
 
   return (
     <Box>
-      <Text css={{ fontWeight: '$semiBold', my: '$8' }}>Participation Summary</Text>
+      <Text css={{ fontWeight: '$semiBold', my: '$8' }}>{DUTCH_JSON.PARTICIPATION_SUMMARY}</Text>
       <Box css={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '$4' }}>
         {boxes.map(box => (
           <StatisticBox key={box.title} title={box.title} value={box.value} />
