@@ -183,5 +183,7 @@ export const DUTCH_JSON: any = {
     DONT_END: "Eindig niet",
     STOP_RECORDING: "Stop met opnemen",
     STARTING: "Beginnen",
-    RECORDING: "Opname"
+    RECORDING: "Opname",
+    LEAVE: "Vertrekken",
+    OTEHRS_WILL_CONTINUE: "Anderen gaan door nadat u bent vertrokken. U kunt opnieuw deelnemen aan de sessie."
 };
