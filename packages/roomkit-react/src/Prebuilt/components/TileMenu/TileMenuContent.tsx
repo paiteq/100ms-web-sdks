@@ -42,6 +42,7 @@ import { useSetAppDataByKey } from '../AppData/useUISettings';
 import { useDropdownSelection } from '../hooks/useDropdownSelection';
 import { getDragClassName } from './utils';
 import { APP_DATA, REMOTE_STOP_SCREENSHARE_TYPE, SESSION_STORE_KEY } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const isSameTile = ({
   trackId,
@@ -111,7 +112,7 @@ const PinActions = ({ audioTrackID, videoTrackID }: { videoTrackID: string; audi
         onClick={() => (isTilePinned ? setPinnedTrackId() : setPinnedTrackId(videoTrackID || audioTrackID))}
       >
         <PinIcon height={20} width={20} />
-        <span>{isTilePinned ? 'Unpin' : 'Pin'} Tile for myself</span>
+        <span>{isTilePinned ? DUTCH_JSON.UN_PIN : DUTCH_JSON.PIN_TILE}</span>
       </StyledMenuTile.ItemButton>
     </>
   );
@@ -125,7 +126,7 @@ const MinimiseInset = () => {
     <>
       <StyledMenuTile.ItemButton className={dragClassName} css={spacingCSS} onClick={() => setMinimised(!minimised)}>
         <ShrinkIcon height={20} width={20} />
-        <span>{minimised ? 'Show' : 'Minimise'} your video</span>
+        <span>{minimised ? 'Show' : DUTCH_JSON.MINIMIZE_YOUR_VIDEO}</span>
       </StyledMenuTile.ItemButton>
     </>
   );
@@ -143,7 +144,7 @@ const SimulcastLayers = ({ trackId }: { trackId: HMSTrackID }) => {
   return (
     <Fragment>
       <StyledMenuTile.ItemButton className={dragClassName} css={{ color: '$on_surface_medium', cursor: 'default' }}>
-        Select maximum resolution
+        {DUTCH_JSON.SELECT_MAXIMUM_RESOLUTION}
       </StyledMenuTile.ItemButton>
       {track.layerDefinitions.map((layer: HMSSimulcastLayerDefinition) => {
         return (
@@ -277,7 +278,7 @@ export const TileMenuContent = ({
           >
             <PencilIcon height={20} width={20} />
             <Text variant="sm" css={{ '@md': { fontWeight: '$semiBold' }, c: '$on_surface_high' }}>
-              Change Name
+              {DUTCH_JSON.CHANGE_NAME}
             </Text>
           </StyledMenuTile.ItemButton>
         )}
@@ -298,7 +299,7 @@ export const TileMenuContent = ({
           data-testid={isVideoEnabled ? 'mute_video_participant_btn' : 'unmute_video_participant_btn'}
         >
           {isVideoEnabled ? <VideoOnIcon height={20} width={20} /> : <VideoOffIcon height={20} width={20} />}
-          <span>{isVideoEnabled ? 'Mute Video' : 'Request to Unmute Video'}</span>
+          <span>{isVideoEnabled ? DUTCH_JSON.MUTE_VIDEO : DUTCH_JSON.REQUEST_TO_UNMUTE_VIDEO}</span>
         </StyledMenuTile.ItemButton>
       ) : null}
 
@@ -313,7 +314,7 @@ export const TileMenuContent = ({
           data-testid={isAudioEnabled ? 'mute_audio_participant_btn' : 'unmute_audio_participant_btn'}
         >
           {isAudioEnabled ? <MicOnIcon height={20} width={20} /> : <MicOffIcon height={20} width={20} />}
-          <span>{isAudioEnabled ? 'Mute Audio' : 'Request to Unmute Audio'}</span>
+          <span>{isAudioEnabled ? DUTCH_JSON.MUTE_AUDIO : DUTCH_JSON.REQUEST_TO_UNMUTE_AUDIO}</span>
         </StyledMenuTile.ItemButton>
       ) : null}
 
@@ -328,7 +329,7 @@ export const TileMenuContent = ({
           data-testid="change_role_btn"
         >
           <PersonSettingsIcon height={20} width={20} />
-          <span>Switch Role</span>
+          <span>{DUTCH_JSON.SWITCH_ROLE}</span>
         </StyledMenuTile.ItemButton>
       ) : null}
 
@@ -372,7 +373,7 @@ export const TileMenuContent = ({
           data-testid="remove_participant_btn"
         >
           <RemoveUserIcon height={20} width={20} />
-          <span>Remove Participant</span>
+          <span>{DUTCH_JSON.REMOVE_PARTICIPANT}</span>
         </StyledMenuTile.RemoveItem>
       ) : null}
 

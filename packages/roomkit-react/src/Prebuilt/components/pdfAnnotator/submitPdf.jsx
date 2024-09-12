@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Flex } from '../../../';
 import { useSetAppDataByKey } from '../AppData/useUISettings';
 import { APP_DATA } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const SubmitPDF = ({ pdfFile, onOpenChange }) => {
   const [, setPDFConfig] = useSetAppDataByKey(APP_DATA.pdfConfig);
@@ -24,7 +25,7 @@ export const SubmitPDF = ({ pdfFile, onOpenChange }) => {
         }}
         css={{ w: '50%' }}
       >
-        Cancel
+        {DUTCH_JSON.CANCEL}
       </Button>
       <Button
         variant="primary"
@@ -41,7 +42,7 @@ export const SubmitPDF = ({ pdfFile, onOpenChange }) => {
           w: '50%',
         }}
       >
-        Start Sharing
+        {DUTCH_JSON.START_SHARING}
       </Button>
     </Flex>
   );

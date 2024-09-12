@@ -4,6 +4,7 @@ import { Button } from '../../../Button';
 import { Input } from '../../../Input';
 import { Box, Flex } from '../../../Layout';
 import { Text } from '../../../Text';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const ChangeNameContent = ({
   changeName,
@@ -40,7 +41,7 @@ export const ChangeNameContent = ({
         }}
       >
         {isMobile ? <ChevronLeftIcon onClick={onBackClick} style={{ marginRight: '0.5rem' }} /> : null}
-        Change Name
+        {DUTCH_JSON.CHANGE_NAME}
         <Box
           css={{ color: 'inherit', ml: 'auto', '&:hover': { color: '$on_surface_medium', cursor: 'pointer' } }}
           onClick={onExit}
@@ -49,7 +50,7 @@ export const ChangeNameContent = ({
         </Box>
       </Text>
       <Text variant="sm" css={{ color: '$on_surface_medium', pb: '$6', mb: '$8', '@md': { px: '$8', mt: '$4' } }}>
-        Your name will be visible to other participants in the session.
+        {DUTCH_JSON.CHANGE_NAME_SUB_TITLE}
       </Text>
       <Flex justify="center" align="center" css={{ my: '$8', w: '100%', '@md': { px: '$8' } }}>
         <Input
@@ -94,7 +95,7 @@ export const ChangeNameContent = ({
             disabled={!localPeerName}
             onClick={onExit}
           >
-            Cancel
+            {DUTCH_JSON.CANCEL}
           </Button>
         )}
 
@@ -105,7 +106,7 @@ export const ChangeNameContent = ({
           disabled={!currentName?.trim() || currentName?.trim() === localPeerName}
           data-testid="popup_change_btn"
         >
-          Change
+          {DUTCH_JSON.CHANGE}
         </Button>
       </Flex>
     </form>

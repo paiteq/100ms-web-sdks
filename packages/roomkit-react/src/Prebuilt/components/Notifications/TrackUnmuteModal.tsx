@@ -8,6 +8,7 @@ import {
 import { MicOnIcon } from '@100mslive/react-icons';
 // @ts-ignore: No implicit Any
 import { RequestDialog } from '../../primitives/DialogContent';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const TrackUnmuteModal = () => {
   const hmsActions = useHMSActions();
@@ -42,9 +43,9 @@ export const TrackUnmuteModal = () => {
 
   return (
     <RequestDialog
-      title={`Unmute your ${track.type}?`}
+      title={track.type === 'audio' ? DUTCH_JSON.UNMUTE_YOUR_AUDIO : DUTCH_JSON.UNMUTE_YOUR_VIDEO}
       onOpenChange={(value: boolean) => !value && setMuteNotification(null)}
-      body={`${peer?.name}is requesting you to unmute your ${track?.type}.`}
+      body={track?.type === "audio" ? `${peer?.name}${DUTCH_JSON.UNMUTE_YOUR_AUDIO_TEXT}.` : `${peer?.name}${DUTCH_JSON.UNMUTE_YOUR_VIDEO_TEXT}.`}
       onAction={() => {
         hmsActions.setEnabledTrack(track.id, enabled);
         setMuteNotification(null);

@@ -76,13 +76,13 @@ export const ToastConfig = {
   PEER_JOINED: {
     single: function (notification) {
       return {
-        title: `${notification.data?.name} joined`,
+        title: `${notification.data?.name} ${DUTCH_JSON.JOINED}`,
         icon: <PeopleAddIcon />,
       };
     },
     multiple: function (notifications) {
       return {
-        title: `${notifications[notifications.length - 1].data.name} and ${notifications.length - 1} others joined`,
+        title: `${notifications[notifications.length - 1].data.name} ${DUTCH_JSON.AND} ${notifications.length - 1} others joined`,
         icon: <PeopleAddIcon />,
       };
     },
@@ -90,13 +90,13 @@ export const ToastConfig = {
   PEER_LEFT: {
     single: function (notification) {
       return {
-        title: `${notification.data?.name} left`,
+        title: `${notification.data?.name} ${DUTCH_JSON.LEFT}`,
         icon: <PeopleRemoveIcon />,
       };
     },
     multiple: function (notifications) {
       return {
-        title: `${notifications[notifications.length - 1].data.name} and ${notifications.length - 1} others left`,
+        title: `${notifications[notifications.length - 1].data.name} ${DUTCH_JSON.AND} ${notifications.length - 1} ${DUTCH_JSON.LEFT}`,
         icon: <PeopleRemoveIcon />,
       };
     },
@@ -104,15 +104,15 @@ export const ToastConfig = {
   RAISE_HAND: {
     single: notification => {
       return {
-        title: `${notification.data?.name} raised hand`,
+        title: `${notification.data?.name} ${DUTCH_JSON.RAISED_HAND}`,
         icon: <HandIcon />,
       };
     },
     multiple: notifications => {
       const count = new Set(notifications.map(notification => notification.data?.id)).size;
       return {
-        title: `${notifications[notifications.length - 1].data?.name} ${count > 1 ? `and ${count} others` : ''
-          } raised hand`,
+        title: `${notifications[notifications.length - 1].data?.name} ${count > 1 ? `${DUTCH_JSON.AND} ${count} ${DUTCH_JSON.OTHER}` : ''
+          } ${DUTCH_JSON.RAISED_HAND}`,
         icon: <HandIcon />,
       };
     },
@@ -120,7 +120,7 @@ export const ToastConfig = {
   RAISE_HAND_HLS: {
     single: notification => {
       return {
-        title: `${notification.data?.name} raised hand`,
+        title: `${notification.data?.name} ${DUTCH_JSON.RAISED_HAND}`,
         icon: <HandIcon />,
         action: <HandRaiseAction id={notification.data?.id} />,
       };
@@ -128,8 +128,8 @@ export const ToastConfig = {
     multiple: notifications => {
       const count = new Set(notifications.map(notification => notification.data?.id)).size;
       return {
-        title: `${notifications[notifications.length - 1].data?.name} ${count > 1 ? `and ${count} others` : ''
-          } raised hand`,
+        title: `${notifications[notifications.length - 1].data?.name} ${count > 1 ? `${DUTCH_JSON.AND} ${count} ${DUTCH_JSON.OTHER}` : ''
+          } ${DUTCH_JSON.RAISED_HAND}`,
         icon: <HandIcon />,
         action: <HandRaiseAction isSingleHandRaise={false} />,
       };

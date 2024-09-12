@@ -331,7 +331,7 @@ export const AudioVideoToggle = ({ hideOptions = false }: { hideOptions?: boolea
           hideOptions={hideOptions || !hasAudioDevices}
           onDisabledClick={toggleAudio}
           testid="audio_toggle_btn"
-          tooltipMessage={`${DUTCH_JSON.TURN} ${isLocalAudioEnabled ? DUTCH_JSON.OFF : DUTCH_JSON.ON} ${DUTCH_JSON.AUDIO} (${isMacOS ? '⌘' : 'ctrl'} + d)`}
+          tooltipMessage={`${DUTCH_JSON.TURN} ${isLocalAudioEnabled ? DUTCH_JSON.OFF : DUTCH_JSON.ON} (${isMacOS ? '⌘' : 'ctrl'} + d)`}
           icon={!isLocalAudioEnabled ? <MicOffIcon /> : <MicOnIcon />}
           active={isLocalAudioEnabled}
           onClick={toggleAudio}
@@ -371,7 +371,7 @@ export const AudioVideoToggle = ({ hideOptions = false }: { hideOptions?: boolea
           disabled={!toggleVideo}
           hideOptions={hideOptions || !hasVideoDevices}
           onDisabledClick={toggleVideo}
-          tooltipMessage={`${DUTCH_JSON.TURN} ${isLocalVideoEnabled ? DUTCH_JSON.OFF : DUTCH_JSON.ON} ${DUTCH_JSON.VIDEO} (${isMacOS ? '⌘' : 'ctrl'} + e)`}
+          tooltipMessage={`${isLocalVideoEnabled ? DUTCH_JSON.CAMERA_OFF : DUTCH_JSON.CAMERA_ON} (${isMacOS ? '⌘' : 'ctrl'} + e)`}
           testid="video_toggle_btn"
           icon={!isLocalVideoEnabled ? <VideoOffIcon /> : <VideoOnIcon />}
           key="toggleVideo"

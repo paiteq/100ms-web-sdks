@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dialog, Text } from '../../../';
 import { DialogCol } from '../../primitives/DialogContent';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const PDFHeader = () => {
   return (
@@ -13,7 +14,7 @@ export const PDFHeader = () => {
     >
       <Dialog.Title asChild>
         <Text as="h6" variant="h6">
-          Share PDF
+          {DUTCH_JSON.SHARE_PDF}
         </Text>
       </Dialog.Title>
       <Dialog.Description asChild>
@@ -23,7 +24,7 @@ export const PDFHeader = () => {
             c: '$on_surface_medium',
           }}
         >
-          Choose PDF you want to annotate and share
+          {DUTCH_JSON.CHOOSE_PDF_YOU_WANT_ANNOTATE}
         </Text>
       </Dialog.Description>
     </DialogCol>

@@ -124,7 +124,7 @@ export function Notifications() {
         const track = notification.data?.track;
         if (!notification.data.enabled) {
           ToastManager.addToast({
-            title: `Your ${track.source} ${track.type} was muted by
+            title: `${DUTCH_JSON.YOUR} ${track.source} ${track.type} ${DUTCH_JSON.WAS_MUTED_BY}
                 ${notification.data.requestedBy?.name}.`,
           });
         }

@@ -20,7 +20,7 @@ export const FullScreenItem = () => {
     >
       <ExpandIcon />
       <Text variant="sm" css={{ ml: '$4' }}>
-        {isFullscreen ? `${DUTCH_JSON.EXIT} ` : `${DUTCH_JSON.GO} `}{DUTCH_JSON.FULL_SCREEN}
+        {isFullscreen ? `${DUTCH_JSON.EXIT_FULL_SCREEN} ` : `${DUTCH_JSON.FULL_SCREEN}`}
       </Text>
     </Dropdown.Item>
   );

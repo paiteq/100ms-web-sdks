@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon, HandRaiseIcon, PeopleIcon } from '@100mslive/react-icons';
 import { Box, Dropdown, Flex, Text, textEllipsis } from '../../../';
 import { CHAT_SELECTOR } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const ParticipantFilter = ({ selection, onSelection, isConnected, roles }) => {
   const [open, setOpen] = useState(false);
@@ -47,7 +48,7 @@ export const ParticipantFilter = ({ selection, onSelection, isConnected, roles }
         <Item selected={!selection} title="Everyone" onSelection={onItemClick} icon={<PeopleIcon />} />
         <Item
           selected={selection?.metadata?.isHandRaised}
-          title="Raised Hand"
+          title={DUTCH_JSON.RAISED_HAND}
           onSelection={onItemClick}
           icon={<HandRaiseIcon />}
           value={{ metadata: { isHandRaised: true }, role: '' }}

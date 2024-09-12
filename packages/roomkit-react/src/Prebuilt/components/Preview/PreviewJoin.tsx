@@ -49,7 +49,7 @@ const getParticipantChipContent = (peerCount = 0) => {
     return DUTCH_JSON.FIRST_TO_JOIN;
   }
   const formattedNum = getFormattedCount(peerCount);
-  return `${formattedNum} ${DUTCH_JSON.OTHER}${parseInt(formattedNum) === 1 ? '' : 's'} ${DUTCH_JSON.IN_THE_SESSION}`;
+  return `${formattedNum} ${DUTCH_JSON.OTHER}${parseInt(formattedNum) === 1 ? '' : 's'} ${DUTCH_JSON.IN_THE_SESSION}${parseInt(formattedNum) === 1 ? '' : 's'}`;
 };
 
 const useLocalTileAspectRatio = () => {

@@ -20,6 +20,7 @@ import { useRoomLayoutConferencingScreen } from '../../provider/roomLayoutProvid
 // @ts-ignore: No implicit Any
 import { useSubscribedNotifications } from '../AppData/useUISettings';
 import { SUBSCRIBED_NOTIFICATIONS } from '../../common/constants';
+import { DUTCH_JSON } from '../../provider/roomLayoutProvider/constants/du';
 
 export const HandRaisedNotifications = () => {
   const notification = useHMSNotifications(HMSNotificationTypes.HAND_RAISE_CHANGED);
@@ -65,9 +66,8 @@ export const HandRaisedNotifications = () => {
       const peer = vanillaStore.getState(selectPeerByID(notification.data.id));
       const handRaisedPeers = vanillaStore.getState(selectHandRaisedPeers);
       if (amIScreenSharing && hasPeerHandRaised) {
-        const title = `${peer?.name} ${
-          handRaisedPeers.length > 1 ? `and ${handRaisedPeers.length - 1} others` : ''
-        } raised hand`;
+        const title = `${peer?.name} ${handRaisedPeers.length > 1 ? `${DUTCH_JSON.AND} ${handRaisedPeers.length - 1} ${DUTCH_JSON.OTHER}` : ''
+          } ${DUTCH_JSON.RAISED_HAND}`;
         showNotification(title, { icon: logoURL });
       }
     },

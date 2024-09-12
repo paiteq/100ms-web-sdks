@@ -10,6 +10,7 @@ import { Sheet } from '../../Sheet';
 import { Text } from '../../Text';
 import { config as cssConfig } from '../../Theme';
 import { Tooltip } from '../../Tooltip';
+import { DUTCH_JSON } from '../provider/roomLayoutProvider/constants/du';
 
 const HighlightTerm = ({ value }: { value: string | undefined }) => {
   return value ? (
@@ -51,7 +52,7 @@ const RoleChangeContent = ({
     <>
       <Flex align="center" justify="between" css={{ w: '100%' }}>
         <Text as="h6" variant="h6">
-          Switch Role
+          {DUTCH_JSON.SWITCH_ROLE}
         </Text>
         {isMobile && <CrossIcon onClick={() => onOpenChange(false)} />}
       </Flex>
@@ -68,9 +69,9 @@ const RoleChangeContent = ({
             columnGap: '4px',
           }}
         >
-          Switch the role of
+          {DUTCH_JSON.SWITCH_ROLE_OF}
           <HighlightTerm value={peer.name} />
-          from <HighlightTerm value={peer.roleName} /> to
+          from <HighlightTerm value={peer.roleName} /> {DUTCH_JSON.TO}
         </Text>
       </Box>
       <Flex
@@ -113,7 +114,7 @@ const RoleChangeContent = ({
                   onSelect={() => setRole(role)}
                   css={{ w: `${triggerRef.current?.clientWidth}px` }}
                 >
-                  {role}
+                  {DUTCH_JSON[role.toUpperCase()] ? DUTCH_JSON[role.toUpperCase()] : role}
                 </Dropdown.Item>
               ))}
             </Dropdown.Content>
@@ -129,7 +130,7 @@ const RoleChangeContent = ({
             onClick={() => onOpenChange(false)}
             data-testid="cancel_button"
           >
-            Cancel
+            {DUTCH_JSON.CANCEL}
           </Button>
         )}
 
@@ -144,7 +145,7 @@ const RoleChangeContent = ({
             }
           }}
         >
-          Switch Role
+          {DUTCH_JSON.CHANGE_ROLE}
         </Button>
       </Flex>
     </>

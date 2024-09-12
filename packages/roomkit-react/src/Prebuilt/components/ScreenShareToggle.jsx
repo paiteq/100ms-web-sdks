@@ -21,7 +21,7 @@ export const ScreenshareToggle = ({ css = {} }) => {
     toggleScreenShare,
   } = useScreenShare(error => {
     ToastManager.addToast({
-      title: error.message,
+      title: DUTCH_JSON.PERMISSION_ERROR,
       variant: 'error',
       duration: 2000,
     });
@@ -46,7 +46,7 @@ export const ScreenshareToggle = ({ css = {} }) => {
             await requestPermission();
           }}
         >
-          <Tooltip title={`${!isVideoScreenshare ? DUTCH_JSON.START : DUTCH_JSON.STOP} ${DUTCH_JSON.SCREEN_SHARING}`}>
+          <Tooltip title={`${!isVideoScreenshare ? "" : DUTCH_JSON.STOP} ${DUTCH_JSON.SCREEN_SHARING}`}>
             <Box>
               <ShareScreenIcon />
             </Box>

@@ -87,13 +87,13 @@ export const RequestDialog = ({ open = true, onOpenChange, title, body, actionTe
           <Box css={{ width: '50%' }}>
             <Dialog.Close css={{ width: '100%' }}>
               <Button variant="standard" outlined css={{ width: '100%' }}>
-                Cancel
+                Annuleer
               </Button>
             </Dialog.Close>
           </Box>
           <Box css={{ width: '50%' }}>
             <Button variant="primary" css={{ width: '100%' }} onClick={onAction}>
-              {actionText}
+              Accepteer
             </Button>
           </Box>
         </Flex>
